@@ -35,7 +35,7 @@ export default function Intro() {
         )
           .fromTo(
             q("[data-line-inner]"),
-            { yPercent: 115 },
+            { yPercent: 140 },
             { yPercent: 0, duration: 1.25, stagger: 0.14 },
             0.15,
           )
@@ -129,13 +129,14 @@ export default function Intro() {
           {dict.hero.eyebrow}
         </p>
 
-        <h1 className="font-display text-[clamp(2.9rem,9vw,7.6rem)] leading-[0.98] tracking-[-0.01em]">
-          <span className="block overflow-hidden pb-1">
+        {/* pb/-mb pair keeps descenders (g, j) visible inside the reveal masks */}
+        <h1 className="font-display text-[clamp(2.9rem,9vw,7.6rem)] leading-[1.02] tracking-[-0.01em]">
+          <span className="block overflow-hidden pr-[0.1em] pb-[0.18em] -mb-[0.18em]">
             <span data-line-inner className="block will-change-transform">
               {dict.hero.titleA}
             </span>
           </span>
-          <span className="block overflow-hidden pb-2">
+          <span className="block overflow-hidden pr-[0.1em] pb-[0.18em] -mb-[0.12em]">
             <span data-line-inner className="block italic will-change-transform">
               {dict.hero.titleB}
               <span className="text-copper">.</span>

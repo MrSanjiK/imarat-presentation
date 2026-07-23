@@ -116,7 +116,7 @@ export default function ProjectOverlay({ slug }: { slug: string }) {
       <div className="glass sticky top-0 z-30 flex items-center justify-between border-b border-line px-5 py-3.5 md:px-10">
         <div className="flex min-w-0 items-baseline gap-4">
           <span className="label-mono !text-copper">{meta.num}</span>
-          <h2 className="truncate font-display text-xl md:text-3xl">{copy.name}</h2>
+          <h2 className="truncate font-display text-xl leading-[1.45] md:text-3xl">{copy.name}</h2>
           {copy.location && (
             <span className="label-mono hidden md:inline">{copy.location}</span>
           )}

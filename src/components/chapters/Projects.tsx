@@ -27,7 +27,7 @@ export default function Projects() {
       data-chapter="projects"
       className="relative bg-bg text-ink transition-colors duration-500"
     >
-      <div className="px-5 pt-28 md:px-10 md:pt-40">
+      <div className="px-5 pt-28 md:px-10 md:pt-40 lg:pr-24">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-6 md:mb-10">
           <div>
             <ChapterLabel index="04" className="mb-6">
@@ -124,7 +124,8 @@ export default function Projects() {
                     )}
                     <span className="label-mono w-8 shrink-0 !text-copper">{meta.num}</span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate font-display text-[clamp(1.5rem,3.2vw,2.9rem)] leading-tight transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-copper">
+                      {/* no truncate/overflow here — it clips serif descenders (g, j) */}
+                      <span className="block font-display text-[clamp(1.5rem,3.2vw,2.9rem)] leading-[1.15] transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-copper">
                         {copy?.name}
                       </span>
                       <span className="mt-1 block truncate text-xs text-muted md:text-[13px]">
