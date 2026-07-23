@@ -89,9 +89,9 @@ const clipSources = {
 
 const topVideos = {
   "hero-desktop": { src: P("Primary animation.mp4"), box: 1920, crf: 24 },
-  "hero-mobile": { src: P("Primary_animation_mobile.mp4"), box: 1280, crf: 25 },
+  "hero-mobile": { src: P("Primary_animation_mobile.mp4"), box: 1920, crf: 24 },
   "process-desktop": { src: P("building_proccess_desktop.mp4"), box: 1920, crf: 24 },
-  "process-mobile": { src: P("building_proccess_mobile.mp4"), box: 1280, crf: 25 },
+  "process-mobile": { src: P("building_proccess_mobile.mp4"), box: 1920, crf: 24 },
   drone: { src: P("Shut from drone.mp4"), box: 1920, crf: 24 },
 };
 
