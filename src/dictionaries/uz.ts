@@ -1,0 +1,363 @@
+import type { Dict } from "./index";
+
+const uz: Dict = {
+  meta: {
+    title: "IMARAT Development — Orzular bizda amalga oshadi",
+    description:
+      "2021-yilda tashkil topgan zamonaviy qurilish kompaniyasi. 10 ta yirik loyiha, 20 000+ xonadon, 1 500 000 m² turar-joy. Sifat — taklif emas, majburiyatdir!",
+    ogAlt: "IMARAT Development — kompaniya prezentatsiyasi",
+  },
+  ui: {
+    call: "Qo'ng'iroq",
+    phone: "+998 78 113 13 13",
+    view: "Ko'rish",
+    close: "Yopish",
+    back: "Orqaga",
+    next: "Keyingi",
+    prev: "Oldingi",
+    scrollHint: "Aylantiring",
+    chapterWord: "bob",
+    themeLight: "Yorug' rejim",
+    themeDark: "Tungi rejim",
+    langLabel: "Til",
+    openProject: "Loyihani ochish",
+    watchVideo: "Videoni ko'rish",
+    page: "sahifa",
+    keyboardHint: "Klaviatura: ↑ ↓ boblar · Esc yopish",
+  },
+  chapters: [
+    { id: "intro", title: "Kirish" },
+    { id: "manifesto", title: "Manifest" },
+    { id: "stats", title: "Raqamlar" },
+    { id: "projects", title: "Loyihalar" },
+    { id: "process", title: "Jarayon" },
+    { id: "advantages", title: "Ustunliklar" },
+    { id: "founder", title: "Asoschi" },
+    { id: "ambassadors", title: "Ambassadorlar" },
+    { id: "contact", title: "Aloqa" },
+  ],
+  hero: {
+    eyebrow: "Qurilish kompaniyasi — Toshkent",
+    titleA: "Orzular bizda",
+    titleB: "amalga oshadi",
+    handwritten: "xalq uchun qurilgan",
+    sub: "IMARAT Development — 2021-yildan buyon 10 ta yirik loyiha, 20 000 dan ortiq xonadon va sifatga bo'lgan so'zsiz majburiyat.",
+    marquee: [
+      "Sifat — taklif emas, majburiyatdir",
+      "Orzular bizda amalga oshadi",
+      "Xalq uchun ishlaymiz",
+    ],
+    est: "EST. 2021 — TOSHKENT, O'ZBEKISTON",
+  },
+  manifesto: {
+    label: "Manifest",
+    statement: "Sifat — taklif emas, majburiyatdir!",
+    body1:
+      "IMARAT Development — 2021-yilda tashkil topgan zamonaviy qurilish kompaniyasi. Bugungi kunga qadar 10 ta yirik loyiha ustida faoliyat yuritib, 200 000 dan ortiq mijozga xizmat ko'rsatib kelmoqdamiz.",
+    body2:
+      "Biz shunchaki uy qurmaymiz — sifatli hayot tarzi uchun sharoit yaratamiz. Maqsadimiz — xalqimiz xotirasida ishonchli va qadrlanadigan kompaniya sifatida qolish.",
+    badge: "2021-yildan buyon",
+  },
+  stats: {
+    label: "Raqamlar",
+    title: "Raqamlar o'zi so'zlaydi",
+    handwritten: "va bu — endi boshlanishi",
+    items: [
+      { value: 10, suffix: "", label: "Yirik loyihalar" },
+      { value: 20000, suffix: "+", label: "Xonadonlar" },
+      { value: 1500000, suffix: " m²", label: "Turar-joy maydoni" },
+      { value: 150000, suffix: "+ m²", label: "Yillik qurilish hajmi" },
+      { value: 200000, suffix: "+", label: "CRM lidlar bazasi" },
+      { value: 5000, suffix: "+", label: "Real xaridorlar" },
+      { value: 5, suffix: "+", label: "Yillik tajriba" },
+      { value: 2, suffix: "", label: "Sotuv ofislari" },
+    ],
+  },
+  projectsChapter: {
+    label: "Portfel",
+    title: "O'nta loyiha — bitta va'da",
+    sub: "Har bir majmua to'liq infratuzilma bilan: maktab, bog'cha, poliklinika, savdo maydonlari va yashil hovlilar.",
+    hint: "Ochish uchun bosing",
+    counterLabel: "loyiha",
+  },
+  overlay: {
+    gallery: "Galereya",
+    catalog: "Katalog",
+    constructionTab: "Qurilish jarayoni",
+    locationStrip: "Atrof-muhit rivoji",
+    featuresLabel: "Xususiyatlar",
+    aboutLabel: "Loyiha haqida",
+    ctaTitle: "Xonadon tanlashga yordam beramiz",
+    ctaBody: "Sotuv ofisi bilan bog'laning — mutaxassislarimiz sizga mos to'lov rejasini hisoblab beradi.",
+    catalogHint: "Sahifalarni varaqlash uchun suring",
+    pageOf: "/",
+  },
+  process: {
+    label: "Jarayon",
+    titleA: "Qurilish —",
+    titleB: "jonli nazoratda",
+    body: "Poydevordan kalit topshirishgacha — har bir bosqich ichki sifat nazorati va zamonaviy texnologiyalar bilan kafolatlanadi.",
+    chips: [
+      "Zamonaviy texnologiyalar",
+      "Bosqichma-bosqich nazorat",
+      "Shaffof jarayon",
+      "Mas'uliyatli jamoa",
+    ],
+  },
+  advantages: {
+    label: "Ustunliklar",
+    title: "Nega aynan IMARAT?",
+    handwritten: "javob oddiy",
+    cards: [
+      {
+        title: "Mijozga g'amxo'rlik",
+        body: "Bosh to'lovsiz takliflar, 1–2 mln so'mlik oylik to'lovlar va yosh oilalar uchun maxsus shartlar.",
+      },
+      {
+        title: "Sifatli infratuzilma",
+        body: "Har bir loyihada maktab, bog'cha, poliklinika, fitnes, savdo markazlari va yashil zonalar.",
+      },
+      {
+        title: "Ishonch va natija",
+        body: "8 000 dan ortiq sof mijoz va 500 000 dan ortiq xizmat ko'rsatilgan aholi — xalq ishonchi.",
+      },
+      {
+        title: "Top reyting",
+        body: "O'zbekistondagi eng yirik CRM bazasi (200 000+) va 2 ta zamonaviy sotuv ofisi.",
+      },
+    ],
+    amenitiesLabel: "Har bir loyihada",
+    amenities: [
+      "Maktab va bog'cha",
+      "Poliklinika",
+      "Yerosti va yerusti parking",
+      "Fitnes va sport zallari",
+      "Savdo komplekslari",
+      "Go'zallik salonlari",
+      "Eco yashil zonalar",
+      "Bolalar maydonchalari",
+    ],
+    offersLabel: "Takliflar",
+    offers: [
+      "0% boshlang'ich to'lov",
+      "100 oygacha foizsiz bo'lib to'lash",
+      "$9 700 dan boshlab xonadonlar",
+      "Investorlar uchun qulay shartlar",
+    ],
+  },
+  ceo: {
+    label: "Asoschi",
+    name: "Marat Xayrullayevich Hamdamov",
+    role: "Asoschi va rahbar",
+    quote:
+      "Kompaniyamizda mijozlar xohish-istaklari birinchi o'rinda turadi. Maqsadimiz — xalqimizga hamyonbop, sifatli uylar va orzusidagi hayotni yetkazib berish.",
+    sign: "Marat Xayrullayevich",
+    creed: "Uysiz inson qolmasin",
+    facts: [
+      { value: "16", label: "yil — dunyo bozorida" },
+      { value: "5+", label: "yil — O'zbekiston bozorida" },
+    ],
+    brandsLabel: "Asos solgan brendlar",
+    brands:
+      "Roma Pizza · Mukammal Group · Tom Marti · TOP HOUSE · Prime-Time Marketing · IMARAT Development",
+    titles: [
+      "Oliy toifali arxitektor-quruvchi",
+      "O'zbekiston Polo va Tent Pegging Federatsiyasi vitse-prezidenti",
+      "Tadbirkor-ambassador",
+    ],
+  },
+  ambassadors: {
+    label: "Ambassadorlar",
+    title: "Bizga ishonganlar",
+    sub: "Sport, jamiyat va san'at yulduzlari — IMARAT atrofida.",
+    founderBadge: "Asoschi",
+    people: [
+      { id: "husanov", name: "Abduqodir Husanov", role: "Futbolchi — Manchester City himoyachisi" },
+      { id: "shomurodov", name: "Eldor Shomurodov", role: "Futbolchi — İstanbul Başakşehir hujumchisi" },
+      { id: "kusherbayev", name: "Rasul Kusherbayev", role: "Jamoatchilik faoli" },
+      { id: "abror", name: "Abror Muxtor Aliy", role: "Jamoatchilik faoli" },
+      { id: "shaxzoda", name: "Shaxzoda Muhammedova", role: "Dizayner, aktrisa" },
+    ],
+  },
+  contact: {
+    label: "Aloqa",
+    title: "Suhbatni boshlaylik",
+    handwritten: "sizni kutamiz",
+    phoneLabel: "Telefon",
+    addressLabel: "Bosh ofis",
+    address: "Toshkent shahri, Sergeli tumani, Qo'yliq 5-mavze, 5-uy",
+    mapsLabel: "Xaritada ochish",
+    socialsLabel: "Ijtimoiy tarmoqlar",
+    officesNote: "2 ta zamonaviy sotuv ofisi mijozlarga tezkor xizmat ko'rsatadi.",
+    coords: "41.2464° N — 69.2939° E",
+    socials: [
+      { id: "telegram", name: "Telegram", handle: "@imarat_development", href: "https://t.me/imarat_development" },
+      { id: "instagram", name: "Instagram", handle: "@imarat_development", href: "https://www.instagram.com/imarat_development/" },
+      { id: "youtube", name: "YouTube", handle: "Marat Xayrullayevich", href: "https://www.youtube.com/@marat_khayrullayevich" },
+      { id: "founder", name: "Asoschi kanali", handle: "@maratxayrullayevichlife", href: "https://t.me/maratxayrullayevichlife" },
+    ],
+    maps: [
+      { id: "google", name: "Google Maps", href: "https://www.google.com/maps/place/Imarat+development/@41.243553,69.2991889,17z" },
+      { id: "yandex", name: "Yandex Maps", href: "https://yandex.uz/maps/-/CPgOaUyY" },
+      { id: "apple", name: "Apple Maps", href: "https://maps.apple.com/place?map=explore&coordinate=41.243899%2C69.299245&name=Imarat%20Development" },
+    ],
+  },
+  footer: {
+    tagline: "Sifat — taklif emas, majburiyatdir!",
+    rights: "© 2021–2026 IMARAT Development. Barcha huquqlar himoyalangan.",
+    backTop: "Boshiga qaytish",
+    madeFor: "Kompaniya prezentatsiyasi",
+  },
+  projects: {
+    "sergeli-city": {
+      name: "Sergeli City",
+      tagline: "Yangi Toshkentning yashil darvozasi",
+      description:
+        "Kompaniya sotuvlarni 2023-yil 26-dekabrda aynan shu loyiha bilan boshlagan. Sergeli City — zamonaviy arxitektura, suv bo'yi hiyoboni va to'liq infratuzilmaga ega yirik turar-joy majmuasi: maktab-bog'chadan savdo maydonlarigacha — hammasi bir qadamda.",
+      location: "Toshkent, Sergeli",
+      features: [
+        "Maktab va bog'chalar",
+        "Suv bo'yi hiyoboni",
+        "Bolalar maydonchalari",
+        "Barbekyu zonalari",
+        "Yerosti parking",
+        "Savdo maydonlari",
+      ],
+    },
+    "eco-park": {
+      name: "Eco Park",
+      tagline: "Shahar ichidagi nafas",
+      description:
+        "Eco Park — yashil konsepsiya asosida qurilayotgan majmua: ko'kalamzor hovlilar, toza havo va zamonaviy qulayliklar uyg'unligi. Yangi aeroport, metro bekati va magistral yo'nalishlariga yaqin istiqbolli hudud.",
+      location: "Toshkent",
+      features: [
+        "Eco yashil zonalar",
+        "Piyodalar xiyoboni",
+        "Bolalar maydonchalari",
+        "Sport maydonlari",
+        "Parking",
+        "Savdo nuqtalari",
+      ],
+    },
+    bristol: {
+      name: "Bristol",
+      tagline: "Klassikaga zamonaviy nigoh",
+      description:
+        "Bristol turar-joy majmuasi — puxta o'ylangan planirovkalar, sifatli materiallar va shinam hovli muhiti. Oila uchun qulay, investitsiya uchun ishonchli tanlov.",
+      location: "Toshkent",
+      features: [
+        "O'ylangan planirovkalar",
+        "Shinam yopiq hovli",
+        "Bolalar maydonchalari",
+        "Parking",
+        "Savdo maydonlari",
+        "Yashil zonalar",
+      ],
+    },
+    "yangi-bristol": {
+      name: "Yangi Bristol",
+      tagline: "Sevimli loyihaning yangi bosqichi",
+      description:
+        "Bristolning davomi — yangilangan arxitektura, yanada keng imkoniyatlar va o'sha e'tirof etilgan sifat standarti. Zamonaviy shahar hayoti uchun yaratilgan.",
+      location: "Toshkent",
+      features: [
+        "Yangilangan arxitektura",
+        "Keng xonadonlar",
+        "Yopiq hovli",
+        "Bolalar maydonchalari",
+        "Parking",
+        "Tijorat maydonlari",
+      ],
+    },
+    "tuzel-park": {
+      name: "Tuzel Park",
+      tagline: "Oila uchun yaratilgan makon",
+      description:
+        "Tuzel Park — bolalar maydonchalari, yashil hovlilar va xavfsiz muhit birlashgan zamonaviy majmua. Shahar ritmida osoyishta oilaviy hayot.",
+      location: "Toshkent, Tuzel",
+      features: [
+        "Xavfsiz yopiq hovli",
+        "Bolalar maydonchalari",
+        "Yashil zonalar",
+        "Sport maydonlari",
+        "Parking",
+        "Savdo nuqtalari",
+      ],
+    },
+    "yangi-hayot": {
+      name: "Yangi Hayot",
+      tagline: "Nomi kabi — yangi boshlanish",
+      description:
+        "Yangi Hayot majmuasi yosh oilalar uchun ideal tanlov: hamyonbop shartlar, zamonaviy qulayliklar va jadal rivojlanayotgan infratuzilma.",
+      location: "Toshkent",
+      features: [
+        "Yosh oilalar uchun shartlar",
+        "Zamonaviy planirovkalar",
+        "Bolalar maydonchalari",
+        "Yashil hovli",
+        "Parking",
+        "Maktab va bog'cha yaqinligi",
+      ],
+    },
+    "imarat-hills": {
+      name: "Imarat Hills",
+      tagline: "Premium kottejlar shaharchasi",
+      description:
+        "Imarat Hills — xususiy kottejlar shaharchasi: keng uchastkalar, zamonaviy arxitektura, bolalar bog'chasi va yashil landshaft. Tabiat bag'rida premium hayot.",
+      features: [
+        "Xususiy kottejlar",
+        "Yashil landshaft",
+        "Bolalar bog'chasi",
+        "Xavfsiz hudud",
+        "Mehmonlar parkingi",
+        "Dam olish zonalari",
+      ],
+    },
+    chortoq: {
+      name: "Chortoq",
+      tagline: "Tog' bag'ridagi osoyishtalik",
+      description:
+        "Chortoq loyihasi — so'lim tabiat qo'ynida zamonaviy qulayliklarga ega uy-joylar. Dam olish va doimiy yashash uchun birdek jozibador makon.",
+      location: "Chortoq",
+      features: [
+        "Tabiat qo'ynida",
+        "Zamonaviy qulayliklar",
+        "Yashil hududlar",
+        "Piyoda yo'laklari",
+        "Parking",
+        "Dam olish zonalari",
+      ],
+    },
+    "chaman-village": {
+      name: "Chaman Village",
+      tagline: "Bog' ichidagi shaharcha",
+      description:
+        "Chaman Village — past qavatli, shinam va yashil turar-joy konsepsiyasi. Har bir detal oilaviy osoyishtalik va qulaylik uchun o'ylangan.",
+      features: [
+        "Past qavatli qurilish",
+        "Shinam hovlilar",
+        "Yashil muhit",
+        "Bolalar maydonchalari",
+        "Parking",
+        "Qulay planirovkalar",
+      ],
+    },
+    "jayhun-avenue": {
+      name: "Jayhun Avenue",
+      tagline: "Keng ko'chalar, yorug' hayot",
+      description:
+        "Jayhun Avenue — zamonaviy shaharsozlik yechimlari, keng xiyobonlar va qulay planirovkalar uyg'unlashgan majmua. Yorug' va erkin hayot maskani.",
+      location: "Yangibog'",
+      features: [
+        "Keng xiyobonlar",
+        "Qulay planirovkalar",
+        "Bolalar maydonchalari",
+        "Yashil zonalar",
+        "Parking",
+        "Savdo maydonlari",
+      ],
+    },
+  },
+};
+
+export default uz;

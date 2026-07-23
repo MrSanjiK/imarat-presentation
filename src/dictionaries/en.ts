@@ -1,0 +1,363 @@
+import type { Dict } from "./index";
+
+const en: Dict = {
+  meta: {
+    title: "IMARAT Development — Dreams Come True With Us",
+    description:
+      "A modern construction company founded in 2021. 10 major projects, 20,000+ apartments, 1,500,000 m² of housing. Quality is not an offer — it is a commitment!",
+    ogAlt: "IMARAT Development — company presentation",
+  },
+  ui: {
+    call: "Call us",
+    phone: "+998 78 113 13 13",
+    view: "View",
+    close: "Close",
+    back: "Back",
+    next: "Next",
+    prev: "Previous",
+    scrollHint: "Scroll",
+    chapterWord: "chapter",
+    themeLight: "Light mode",
+    themeDark: "Dark mode",
+    langLabel: "Language",
+    openProject: "Open project",
+    watchVideo: "Watch video",
+    page: "page",
+    keyboardHint: "Keyboard: ↑ ↓ chapters · Esc to close",
+  },
+  chapters: [
+    { id: "intro", title: "Intro" },
+    { id: "manifesto", title: "Manifesto" },
+    { id: "stats", title: "Numbers" },
+    { id: "projects", title: "Projects" },
+    { id: "process", title: "Process" },
+    { id: "advantages", title: "Advantages" },
+    { id: "founder", title: "Founder" },
+    { id: "ambassadors", title: "Ambassadors" },
+    { id: "contact", title: "Contact" },
+  ],
+  hero: {
+    eyebrow: "Construction company — Tashkent",
+    titleA: "Dreams come true",
+    titleB: "with us",
+    handwritten: "built for the people",
+    sub: "IMARAT Development — since 2021: 10 major projects, over 20,000 apartments and an unconditional commitment to quality.",
+    marquee: [
+      "Quality is not an offer — it is a commitment",
+      "Dreams come true with us",
+      "We work for the people",
+    ],
+    est: "EST. 2021 — TASHKENT, UZBEKISTAN",
+  },
+  manifesto: {
+    label: "Manifesto",
+    statement: "Quality is not an offer — it is a commitment!",
+    body1:
+      "IMARAT Development is a modern construction company founded in 2021. Today we run 10 major projects and serve more than 200,000 clients.",
+    body2:
+      "We don't just build homes — we create the conditions for a quality way of life. Our goal is to be remembered by our people as a trusted, respected company.",
+    badge: "Since 2021",
+  },
+  stats: {
+    label: "Numbers",
+    title: "The numbers speak",
+    handwritten: "and this is just the beginning",
+    items: [
+      { value: 10, suffix: "", label: "Major projects" },
+      { value: 20000, suffix: "+", label: "Apartments" },
+      { value: 1500000, suffix: " m²", label: "Residential area" },
+      { value: 150000, suffix: "+ m²", label: "Built annually" },
+      { value: 200000, suffix: "+", label: "CRM leads base" },
+      { value: 5000, suffix: "+", label: "Actual buyers" },
+      { value: 5, suffix: "+", label: "Years of experience" },
+      { value: 2, suffix: "", label: "Sales offices" },
+    ],
+  },
+  projectsChapter: {
+    label: "Portfolio",
+    title: "Ten projects — one promise",
+    sub: "Every complex comes with full infrastructure: school, kindergarten, clinic, retail spaces and green courtyards.",
+    hint: "Click to open",
+    counterLabel: "projects",
+  },
+  overlay: {
+    gallery: "Gallery",
+    catalog: "Catalogue",
+    constructionTab: "Construction progress",
+    locationStrip: "Area development",
+    featuresLabel: "Highlights",
+    aboutLabel: "About the project",
+    ctaTitle: "We'll help you choose a home",
+    ctaBody: "Contact our sales office — our specialists will tailor a payment plan for you.",
+    catalogHint: "Swipe through the catalogue pages",
+    pageOf: "/",
+  },
+  process: {
+    label: "Process",
+    titleA: "Construction —",
+    titleB: "under live control",
+    body: "From foundation to key handover — every stage is backed by internal quality control and modern technology.",
+    chips: [
+      "Modern technology",
+      "Stage-by-stage control",
+      "Transparent process",
+      "Accountable team",
+    ],
+  },
+  advantages: {
+    label: "Advantages",
+    title: "Why IMARAT?",
+    handwritten: "the answer is simple",
+    cards: [
+      {
+        title: "Client care",
+        body: "Zero-down-payment offers, monthly instalments of 1–2 million UZS and special terms for young families.",
+      },
+      {
+        title: "Quality infrastructure",
+        body: "Every project includes a school, kindergarten, clinic, fitness, shopping centres and green zones.",
+      },
+      {
+        title: "Trust and results",
+        body: "Over 8,000 net clients and more than 500,000 residents served — the trust of the people.",
+      },
+      {
+        title: "Top rating",
+        body: "The largest CRM base in Uzbekistan (200,000+) and 2 modern sales offices.",
+      },
+    ],
+    amenitiesLabel: "In every project",
+    amenities: [
+      "School & kindergarten",
+      "Clinic",
+      "Underground & surface parking",
+      "Fitness & sports halls",
+      "Shopping complexes",
+      "Beauty salons",
+      "Eco green zones",
+      "Playgrounds",
+    ],
+    offersLabel: "Offers",
+    offers: [
+      "0% down payment",
+      "Interest-free instalments up to 100 months",
+      "Apartments from $9,700",
+      "Favourable terms for investors",
+    ],
+  },
+  ceo: {
+    label: "Founder",
+    name: "Marat Khayrullaevich Hamdamov",
+    role: "Founder & CEO",
+    quote:
+      "In our company, the client's wishes always come first. Our goal is to give our people affordable, quality homes — and the life of their dreams.",
+    sign: "Marat Khayrullaevich",
+    creed: "No one should be left without a home",
+    facts: [
+      { value: "16", label: "years — on the global market" },
+      { value: "5+", label: "years — in Uzbekistan" },
+    ],
+    brandsLabel: "Founded brands",
+    brands:
+      "Roma Pizza · Mukammal Group · Tom Marti · TOP HOUSE · Prime-Time Marketing · IMARAT Development",
+    titles: [
+      "Top-category architect-builder",
+      "Vice-president of the Uzbekistan Polo & Tent Pegging Federation",
+      "Entrepreneur ambassador",
+    ],
+  },
+  ambassadors: {
+    label: "Ambassadors",
+    title: "Trusted by the stars",
+    sub: "Icons of sport, society and art — around IMARAT.",
+    founderBadge: "Founder",
+    people: [
+      { id: "husanov", name: "Abdukodir Khusanov", role: "Footballer — Manchester City defender" },
+      { id: "shomurodov", name: "Eldor Shomurodov", role: "Footballer — İstanbul Başakşehir striker" },
+      { id: "kusherbayev", name: "Rasul Kusherbayev", role: "Public figure" },
+      { id: "abror", name: "Abror Mukhtor Aliy", role: "Public figure" },
+      { id: "shaxzoda", name: "Shakhzoda Muhammedova", role: "Designer, actress" },
+    ],
+  },
+  contact: {
+    label: "Contact",
+    title: "Let's talk",
+    handwritten: "we are waiting for you",
+    phoneLabel: "Phone",
+    addressLabel: "Head office",
+    address: "Tashkent, Sergeli district, Kuyluk 5, building 5",
+    mapsLabel: "Open in maps",
+    socialsLabel: "Social media",
+    officesNote: "2 modern sales offices provide fast client service.",
+    coords: "41.2464° N — 69.2939° E",
+    socials: [
+      { id: "telegram", name: "Telegram", handle: "@imarat_development", href: "https://t.me/imarat_development" },
+      { id: "instagram", name: "Instagram", handle: "@imarat_development", href: "https://www.instagram.com/imarat_development/" },
+      { id: "youtube", name: "YouTube", handle: "Marat Khayrullaevich", href: "https://www.youtube.com/@marat_khayrullayevich" },
+      { id: "founder", name: "Founder's channel", handle: "@maratxayrullayevichlife", href: "https://t.me/maratxayrullayevichlife" },
+    ],
+    maps: [
+      { id: "google", name: "Google Maps", href: "https://www.google.com/maps/place/Imarat+development/@41.243553,69.2991889,17z" },
+      { id: "yandex", name: "Yandex Maps", href: "https://yandex.uz/maps/-/CPgOaUyY" },
+      { id: "apple", name: "Apple Maps", href: "https://maps.apple.com/place?map=explore&coordinate=41.243899%2C69.299245&name=Imarat%20Development" },
+    ],
+  },
+  footer: {
+    tagline: "Quality is not an offer — it is a commitment!",
+    rights: "© 2021–2026 IMARAT Development. All rights reserved.",
+    backTop: "Back to top",
+    madeFor: "Company presentation",
+  },
+  projects: {
+    "sergeli-city": {
+      name: "Sergeli City",
+      tagline: "The green gateway of new Tashkent",
+      description:
+        "The company's sales began on 26 December 2023 with this very project. Sergeli City is a large residential complex with modern architecture, a waterfront promenade and full infrastructure — from school and kindergarten to retail, all steps away.",
+      location: "Tashkent, Sergeli",
+      features: [
+        "Schools & kindergartens",
+        "Waterfront promenade",
+        "Playgrounds",
+        "BBQ areas",
+        "Underground parking",
+        "Retail spaces",
+      ],
+    },
+    "eco-park": {
+      name: "Eco Park",
+      tagline: "A breath inside the city",
+      description:
+        "Eco Park is a complex built around a green concept: landscaped courtyards, fresh air and modern comfort. A promising district near the new airport, metro station and highways.",
+      location: "Tashkent",
+      features: [
+        "Eco green zones",
+        "Pedestrian alley",
+        "Playgrounds",
+        "Sports grounds",
+        "Parking",
+        "Retail points",
+      ],
+    },
+    bristol: {
+      name: "Bristol",
+      tagline: "A modern take on the classics",
+      description:
+        "Bristol residential complex — well-thought-out layouts, quality materials and a cosy courtyard environment. Comfortable for families, reliable for investment.",
+      location: "Tashkent",
+      features: [
+        "Thoughtful layouts",
+        "Cosy private courtyard",
+        "Playgrounds",
+        "Parking",
+        "Retail spaces",
+        "Green zones",
+      ],
+    },
+    "yangi-bristol": {
+      name: "Yangi Bristol",
+      tagline: "A new chapter of a beloved project",
+      description:
+        "The continuation of Bristol — refreshed architecture, even more possibilities and the same recognised standard of quality. Made for modern city living.",
+      location: "Tashkent",
+      features: [
+        "Refreshed architecture",
+        "Spacious apartments",
+        "Private courtyard",
+        "Playgrounds",
+        "Parking",
+        "Commercial spaces",
+      ],
+    },
+    "tuzel-park": {
+      name: "Tuzel Park",
+      tagline: "A space made for family",
+      description:
+        "Tuzel Park is a modern complex uniting playgrounds, green courtyards and a safe environment. Calm family life in the rhythm of the city.",
+      location: "Tashkent, Tuzel",
+      features: [
+        "Safe private courtyard",
+        "Playgrounds",
+        "Green zones",
+        "Sports grounds",
+        "Parking",
+        "Retail points",
+      ],
+    },
+    "yangi-hayot": {
+      name: "Yangi Hayot",
+      tagline: "Like its name — a new beginning",
+      description:
+        "Yangi Hayot is an ideal choice for young families: affordable terms, modern comfort and rapidly developing infrastructure.",
+      location: "Tashkent",
+      features: [
+        "Terms for young families",
+        "Modern layouts",
+        "Playgrounds",
+        "Green courtyard",
+        "Parking",
+        "School & kindergarten nearby",
+      ],
+    },
+    "imarat-hills": {
+      name: "Imarat Hills",
+      tagline: "A premium cottage town",
+      description:
+        "Imarat Hills is a private cottage town: spacious plots, modern architecture, a kindergarten and green landscaping. Premium living embraced by nature.",
+      features: [
+        "Private cottages",
+        "Green landscaping",
+        "Kindergarten",
+        "Secured area",
+        "Guest parking",
+        "Leisure zones",
+      ],
+    },
+    chortoq: {
+      name: "Chortoq",
+      tagline: "Serenity at the foothills",
+      description:
+        "The Chortoq project — homes with modern comfort amid picturesque nature. Equally attractive for retreats and for permanent living.",
+      location: "Chortoq",
+      features: [
+        "Embraced by nature",
+        "Modern comfort",
+        "Green territories",
+        "Walking paths",
+        "Parking",
+        "Leisure zones",
+      ],
+    },
+    "chaman-village": {
+      name: "Chaman Village",
+      tagline: "A town within a garden",
+      description:
+        "Chaman Village is a low-rise, cosy and green housing concept. Every detail is designed for family peace and comfort.",
+      features: [
+        "Low-rise construction",
+        "Cosy courtyards",
+        "Green environment",
+        "Playgrounds",
+        "Parking",
+        "Convenient layouts",
+      ],
+    },
+    "jayhun-avenue": {
+      name: "Jayhun Avenue",
+      tagline: "Wide streets, bright living",
+      description:
+        "Jayhun Avenue is a complex combining modern urban-planning solutions, wide boulevards and convenient layouts. A place of bright, free living.",
+      location: "Yangibog'",
+      features: [
+        "Wide boulevards",
+        "Convenient layouts",
+        "Playgrounds",
+        "Green zones",
+        "Parking",
+        "Retail spaces",
+      ],
+    },
+  },
+};
+
+export default en;
