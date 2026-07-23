@@ -74,12 +74,12 @@ export default function Stats() {
             <div
               key={i}
               data-reveal
-              className="group relative border-r border-b border-line p-6 transition-colors duration-500 hover:bg-copper-soft md:p-10"
+              className="group relative border-r border-b border-line p-4 py-6 transition-colors duration-500 hover:bg-copper-soft md:p-10"
             >
-              <span className="label-mono absolute top-4 right-4 opacity-40">
+              <span className="label-mono absolute top-3 right-3 opacity-40 md:top-4 md:right-4">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <dd className="font-display text-[clamp(1.9rem,4vw,3.6rem)] leading-none whitespace-nowrap text-copper">
+              <dd className="font-display text-[clamp(1.4rem,4.6vw,3.6rem)] leading-none whitespace-nowrap text-copper">
                 <span data-count={item.value}>0</span>
                 <span className="text-[0.6em]">{item.suffix.replace(" ", " ")}</span>
               </dd>

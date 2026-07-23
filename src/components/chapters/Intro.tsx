@@ -123,14 +123,14 @@ export default function Intro() {
       {/* content */}
       <div
         data-content
-        className="relative z-10 flex min-h-svh flex-col justify-end px-5 pt-28 pb-32 md:px-10 md:pb-36"
+        className="relative z-10 flex min-h-svh flex-col justify-end px-4 pt-24 pb-24 md:px-10 md:pt-28 md:pb-36"
       >
-        <p data-fade className="label-mono mb-5 !text-[#f2ede6]/60">
+        <p data-fade className="label-mono video-text mb-5 !text-[#f2ede6]/70">
           {dict.hero.eyebrow}
         </p>
 
         {/* pb/-mb pair keeps descenders (g, j) visible inside the reveal masks */}
-        <h1 className="font-display text-[clamp(2.9rem,9vw,7.6rem)] leading-[1.02] tracking-[-0.01em]">
+        <h1 className="video-text-strong font-display text-[clamp(2.9rem,9vw,7.6rem)] leading-[1.02] tracking-[-0.01em]">
           <span className="block overflow-hidden pr-[0.1em] pb-[0.18em] -mb-[0.18em]">
             <span data-line-inner className="block will-change-transform">
               {dict.hero.titleA}
@@ -146,7 +146,7 @@ export default function Intro() {
 
         {/* handwritten accent */}
         <div data-hand className="relative mt-4 inline-block self-start opacity-0 md:mt-2">
-          <span className="font-hand text-2xl text-copper md:text-4xl">
+          <span className="video-text font-hand text-2xl text-copper md:text-4xl">
             — {dict.hero.handwritten}
           </span>
           <svg
@@ -167,10 +167,10 @@ export default function Intro() {
         </div>
 
         <div className="mt-9 flex flex-wrap items-end justify-between gap-6">
-          <p data-fade className="max-w-xl text-sm leading-relaxed text-[#f2ede6]/70 md:text-base">
+          <p data-fade className="video-text max-w-xl text-sm leading-relaxed text-[#f2ede6]/85 md:text-base">
             {dict.hero.sub}
           </p>
-          <p data-fade className="label-mono !text-[#f2ede6]/45">
+          <p data-fade className="label-mono video-text !text-[#f2ede6]/60">
             {dict.hero.est}
           </p>
         </div>
@@ -181,7 +181,7 @@ export default function Intro() {
         data-fade
         className="absolute bottom-16 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
       >
-        <span className="label-mono !text-[#f2ede6]/50">{dict.ui.scrollHint}</span>
+        <span className="label-mono video-text !text-[#f2ede6]/65">{dict.ui.scrollHint}</span>
         <span className="relative block h-10 w-px overflow-hidden bg-[#f2ede6]/20">
           <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-drip_1.6s_ease-in-out_infinite] bg-copper" />
         </span>

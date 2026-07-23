@@ -151,7 +151,11 @@ export default function PresentationShell({
       <Cursor />
       {children}
       {overlaySlug && <ProjectOverlay slug={overlaySlug} />}
-      <p className="label-mono fixed right-6 bottom-5 z-[110] hidden opacity-50 xl:block">
+      <p
+        className={`label-mono fixed right-6 bottom-5 z-[110] hidden transition-opacity duration-500 xl:block ${
+          active === 0 ? "opacity-0" : "opacity-50"
+        }`}
+      >
         {dict.ui.keyboardHint}
       </p>
     </Ctx.Provider>

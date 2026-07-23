@@ -79,7 +79,7 @@ export default function Founder() {
           <div className="absolute -inset-3 -z-10 border border-copper/35" aria-hidden />
           <RotatingBadge
             text="IMARAT DEVELOPMENT • EST 2021 • "
-            className="absolute -right-10 -bottom-10 size-24 text-copper md:size-28"
+            className="absolute -right-3 -bottom-6 size-20 text-copper md:-right-10 md:-bottom-10 md:size-28"
           />
         </div>
 
@@ -131,7 +131,7 @@ export default function Founder() {
             </footer>
           </blockquote>
 
-          <div data-reveal className="mt-12 flex gap-12 border-t border-line pt-8">
+          <div data-reveal className="mt-10 flex gap-8 border-t border-line pt-7 md:mt-12 md:gap-12 md:pt-8">
             {dict.ceo.facts.map((f) => (
               <div key={f.label}>
                 <p className="font-display text-4xl text-copper md:text-5xl">{f.value}</p>

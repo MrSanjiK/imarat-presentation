@@ -78,7 +78,7 @@ export default function Process() {
       ref={root}
       id="process"
       data-chapter="process"
-      className="relative h-[240vh] bg-[#0d0c0a]"
+      className="relative h-[200vh] bg-[#0d0c0a] md:h-[240vh]"
     >
       <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
         {/* video frame */}
@@ -100,8 +100,8 @@ export default function Process() {
         </div>
 
         {/* text overlay */}
-        <div className="relative z-10 flex h-full w-full flex-col justify-between px-5 pt-28 pb-14 text-[#f2ede6] md:px-10">
-          <p className="label-mono !text-[#f2ede6]/60">
+        <div className="relative z-10 flex h-full w-full flex-col justify-between px-5 pt-24 pb-10 text-[#f2ede6] md:px-10 md:pt-28 md:pb-14">
+          <p className="label-mono video-text !text-[#f2ede6]/70">
             05 — {dict.process.label}
           </p>
 
@@ -109,26 +109,29 @@ export default function Process() {
             <h2 className="font-display leading-[1.02]">
               <span
                 data-title-a
-                className="block text-[clamp(2.4rem,7vw,6rem)] tracking-tight"
-                style={{ WebkitTextStroke: "1px rgba(242,237,230,0.75)", color: "transparent" }}
+                className="video-outline block text-[clamp(2.4rem,7vw,6rem)] tracking-tight"
+                style={{ WebkitTextStroke: "1.2px rgba(242,237,230,0.92)", color: "transparent" }}
               >
                 {dict.process.titleA}
               </span>
-              <span data-title-b className="block text-[clamp(2.4rem,7vw,6rem)] italic">
+              <span
+                data-title-b
+                className="video-text-strong block text-[clamp(2.4rem,7vw,6rem)] italic"
+              >
                 {dict.process.titleB}
               </span>
             </h2>
           </div>
 
-          <div data-bottom className="flex flex-wrap items-end justify-between gap-6">
-            <p className="max-w-md text-sm leading-relaxed text-[#f2ede6]/75 md:text-[15px]">
+          <div data-bottom className="flex flex-wrap items-end justify-between gap-4 md:gap-6">
+            <p className="video-text max-w-md text-[13px] leading-relaxed text-[#f2ede6]/85 md:text-[15px]">
               {dict.process.body}
             </p>
-            <ul className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-1.5 md:gap-2">
               {dict.process.chips.map((chip) => (
                 <li
                   key={chip}
-                  className="rounded-full border border-[#f2ede6]/25 px-4 py-2 font-mono text-[10px] tracking-[0.16em] text-[#f2ede6]/80 uppercase"
+                  className="video-text rounded-full border border-[#f2ede6]/30 bg-black/20 px-3 py-1.5 font-mono text-[9px] tracking-[0.16em] text-[#f2ede6]/90 uppercase backdrop-blur-sm md:px-4 md:py-2 md:text-[10px]"
                 >
                   {chip}
                 </li>

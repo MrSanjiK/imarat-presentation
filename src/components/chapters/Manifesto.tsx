@@ -65,27 +65,27 @@ export default function Manifesto() {
       ref={root}
       id="manifesto"
       data-chapter="manifesto"
-      className="invert-band relative h-[260vh] bg-bg text-ink transition-colors duration-500"
+      className="invert-band relative h-[190vh] bg-bg text-ink transition-colors duration-500 md:h-[260vh]"
     >
-      <div className="sticky top-0 flex h-svh flex-col justify-center overflow-hidden px-5 md:px-10">
-        <div className="pointer-events-none absolute top-24 left-5 md:left-10">
+      <div className="sticky top-0 flex h-svh flex-col justify-center overflow-hidden px-5 pt-14 md:px-10 md:pt-0">
+        <div className="pointer-events-none absolute top-20 left-5 md:top-24 md:left-10">
           <ChapterLabel index="02">{dict.manifesto.label}</ChapterLabel>
         </div>
 
-        <div className="grid items-center gap-12 lg:grid-cols-[1.35fr_0.65fr] lg:gap-20 lg:pr-16">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:gap-20 lg:pr-16">
           <div>
             <h2
               data-statement
-              className="font-display text-[clamp(2.1rem,5.8vw,4.9rem)] leading-[1.06] tracking-[-0.01em]"
+              className="font-display text-[clamp(1.7rem,5.8vw,4.9rem)] leading-[1.08] tracking-[-0.01em]"
             >
               {dict.manifesto.statement}
             </h2>
 
-            <div className="mt-10 grid max-w-3xl gap-6 md:grid-cols-2 md:gap-10">
-              <p data-reveal className="text-sm leading-relaxed text-ink-soft md:text-[15px]">
+            <div className="mt-7 grid max-w-3xl gap-5 md:mt-10 md:grid-cols-2 md:gap-10">
+              <p data-reveal className="text-[13px] leading-relaxed text-ink-soft md:text-[15px]">
                 {dict.manifesto.body1}
               </p>
-              <p data-reveal className="text-sm leading-relaxed text-ink-soft md:text-[15px]">
+              <p data-reveal className="text-[13px] leading-relaxed text-ink-soft md:text-[15px]">
                 {dict.manifesto.body2}
               </p>
             </div>
