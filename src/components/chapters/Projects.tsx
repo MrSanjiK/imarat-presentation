@@ -55,10 +55,10 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr] lg:min-h-screen">
         {/* sticky preview — desktop only */}
         <div className="relative hidden lg:block">
-          <div className="sticky top-0 flex h-svh items-center justify-center p-10 pl-10">
+          <div className="sticky top-0 flex h-screen items-center justify-center p-10 pl-10">
             <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden bg-surface-2">
               {projectOrder.map((slug, i) => {
                 const cover = coverImage(slug);
