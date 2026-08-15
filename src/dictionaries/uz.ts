@@ -196,6 +196,7 @@ const uz: Dict = {
       { id: "kusherbayev", name: "Rasul Kusherbayev", role: "Jamoatchilik faoli" },
       { id: "abror", name: "Abror Muxtor Aliy", role: "Jamoatchilik faoli" },
       { id: "shaxzoda", name: "Shaxzoda Muhammedova", role: "Dizayner, aktrisa" },
+      { id: "dilshodbek", name: "Dilshodbek Kattabekov", role: "O'zbekistonda xizmat ko'rsatgan aktyor" },
     ],
   },
   clientExperience: {

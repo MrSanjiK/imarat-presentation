@@ -196,6 +196,7 @@ const zh: Dict = {
       { id: "kusherbayev", name: "拉苏尔·库舍尔巴耶夫", role: "社会活动家" },
       { id: "abror", name: "阿布罗尔·穆赫塔尔·阿利", role: "社会活动家" },
       { id: "shaxzoda", name: "沙赫佐达·穆罕默多娃", role: "设计师、演员" },
+      { id: "dilshodbek", name: "迪尔肖德别克·卡塔别科夫", role: "乌兹别克斯坦功勋艺术家" },
     ],
   },
   clientExperience: {

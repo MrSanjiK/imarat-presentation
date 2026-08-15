@@ -196,6 +196,7 @@ const ar: Dict = {
       { id: "kusherbayev", name: "رسول كوشرباييف", role: "ناشط اجتماعي" },
       { id: "abror", name: "أبرور مختار علي", role: "ناشط اجتماعي" },
       { id: "shaxzoda", name: "شهرزاد محمدوفا", role: "مصممة، ممثلة" },
+      { id: "dilshodbek", name: "ديلشودبيك كاتابيكوف", role: "فنان مكرم في أوزبكستان" },
     ],
   },
   clientExperience: {

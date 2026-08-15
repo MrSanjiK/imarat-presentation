@@ -196,6 +196,7 @@ const ru: Dict = {
       { id: "kusherbayev", name: "Расул Кушербаев", role: "Общественный деятель" },
       { id: "abror", name: "Аброр Мухтор Алий", role: "Общественный деятель" },
       { id: "shaxzoda", name: "Шахзода Мухаммедова", role: "Дизайнер, актриса" },
+      { id: "dilshodbek", name: "Дильшодбек Каттабеков", role: "Заслуженный артист Узбекистана" },
     ],
   },
   clientExperience: {

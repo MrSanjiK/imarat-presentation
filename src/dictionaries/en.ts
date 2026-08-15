@@ -196,6 +196,7 @@ const en: Dict = {
       { id: "kusherbayev", name: "Rasul Kusherbayev", role: "Public figure" },
       { id: "abror", name: "Abror Mukhtor Aliy", role: "Public figure" },
       { id: "shaxzoda", name: "Shakhzoda Muhammedova", role: "Designer, actress" },
+      { id: "dilshodbek", name: "Dilshodbek Kattabekov", role: "Honored Artist of Uzbekistan" },
     ],
   },
   clientExperience: {
