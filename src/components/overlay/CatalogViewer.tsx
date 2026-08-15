@@ -85,7 +85,7 @@ export default function CatalogViewer({
           <div
             key={i}
             data-page
-            className="relative w-[82%] max-w-[560px] shrink-0 snap-center overflow-hidden border border-line bg-surface md:w-[46%]"
+            className="relative w-[82%] max-w-[560px] shrink-0 snap-center overflow-hidden rounded-[16px] border border-line bg-surface md:w-[46%]"
             style={{ aspectRatio: ratio }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -97,7 +97,7 @@ export default function CatalogViewer({
               draggable={false}
               className="h-full w-full object-cover"
             />
-            <span className="absolute right-2 bottom-2 rounded-sm bg-black/50 px-2 py-0.5 font-mono text-[9px] text-white/90">
+            <span className="absolute right-2 bottom-2 rounded-[6px] bg-black/50 px-2 py-0.5 font-mono text-[9px] text-white/90">
               {String(i + 1).padStart(2, "0")}
             </span>
           </div>

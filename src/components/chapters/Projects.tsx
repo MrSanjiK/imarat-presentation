@@ -126,7 +126,7 @@ export default function Projects() {
                         loading="lazy"
                         decoding="async"
                         draggable={false}
-                        className="h-12 w-16 shrink-0 rounded-sm object-cover lg:hidden"
+                        className="h-12 w-16 shrink-0 rounded-[8px] object-cover lg:hidden"
                       />
                     )}
                     <span className="label-mono w-8 shrink-0 !text-copper">{meta.num}</span>

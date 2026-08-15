@@ -54,7 +54,7 @@ export default function SeismicSafety() {
     >
       <div className="container mx-auto grid gap-6 px-5 md:grid-cols-[1.2fr,1fr] md:gap-8 md:px-10 lg:gap-12">
         {/* Video */}
-        <div className="relative aspect-[9/16] overflow-hidden rounded-lg md:sticky md:top-20 md:h-[82vh]">
+        <div className="relative aspect-[9/16] overflow-hidden rounded-[20px] md:sticky md:top-20 md:h-[82vh]">
           <video
             className="h-full w-full object-cover"
             src={VIDEOS.seismicTest}
@@ -92,17 +92,17 @@ export default function SeismicSafety() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 pt-4">
-            <div data-stats className="rounded-lg border border-line bg-surface p-4">
+            <div data-stats className="rounded-[16px] border border-line bg-surface p-4">
               <div className="font-display text-3xl text-copper">8-9</div>
               <p className="label-mono mt-1">{dict.seismic?.stat1 || "Ball zilzila"}</p>
             </div>
-            <div data-stats className="rounded-lg border border-line bg-surface p-4">
+            <div data-stats className="rounded-[16px] border border-line bg-surface p-4">
               <div className="font-display text-3xl text-copper">100%</div>
               <p className="label-mono mt-1">{dict.seismic?.stat2 || "Bardoshli"}</p>
             </div>
           </div>
 
-          <div data-stats className="space-y-3 rounded-lg border border-line bg-surface p-5">
+          <div data-stats className="space-y-3 rounded-[16px] border border-line bg-surface p-5">
             <h3 className="font-display text-lg italic text-copper">
               {dict.seismic?.partnersTitle || "Hamkorlar"}
             </h3>

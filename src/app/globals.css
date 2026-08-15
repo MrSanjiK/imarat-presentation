@@ -99,6 +99,13 @@
   --animate-marquee-slow: marquee 46s linear infinite;
   --animate-spin-slow: spin 14s linear infinite;
 
+  /* Apple-style border radius tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
   @keyframes marquee {
     from {
       transform: translateX(0);
@@ -144,7 +151,7 @@ body {
 :focus-visible {
   outline: 2px solid var(--copper);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* readability over video backdrops */
