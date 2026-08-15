@@ -6,13 +6,18 @@ import { usePresentation } from "@/components/PresentationShell";
 import { localePaths, locales, type Locale } from "@/dictionaries";
 import { LOGOS } from "@/lib/media";
 import Magnetic from "@/components/ui/Magnetic";
+import UZ from "country-flag-icons/react/3x2/UZ";
+import RU from "country-flag-icons/react/3x2/RU";
+import GB from "country-flag-icons/react/3x2/GB";
+import SA from "country-flag-icons/react/3x2/SA";
+import CN from "country-flag-icons/react/3x2/CN";
 
-const LANGS: Record<Locale, { native: string; code: string; flag: string }> = {
-  uz: { native: "O'zbekcha", code: "Uz", flag: "🇺🇿" },
-  ru: { native: "Русский", code: "Ру", flag: "🇷🇺" },
-  en: { native: "English", code: "En", flag: "🇬🇧" },
-  ar: { native: "العربية", code: "Ar", flag: "🇸🇦" },
-  zh: { native: "中文", code: "中", flag: "🇨🇳" },
+const LANGS: Record<Locale, { native: string; code: string; FlagComponent: React.ComponentType<{ className?: string }> }> = {
+  uz: { native: "O'zbekcha", code: "Uz", FlagComponent: UZ },
+  ru: { native: "Русский", code: "Ру", FlagComponent: RU },
+  en: { native: "English", code: "En", FlagComponent: GB },
+  ar: { native: "العربية", code: "Ar", FlagComponent: SA },
+  zh: { native: "中文", code: "中", FlagComponent: CN },
 };
 
 const PhoneIcon = ({ className = "size-3" }: { className?: string }) => (
@@ -42,6 +47,8 @@ function LangSwitcher() {
     };
   }, [open]);
 
+  const CurrentFlag = LANGS[locale].FlagComponent;
+
   return (
     <div ref={ref} className="relative">
       <button
@@ -56,8 +63,8 @@ function LangSwitcher() {
         }`}
       >
         {/* flag circle */}
-        <span className="flex size-5 items-center justify-center rounded-full bg-surface text-sm leading-none">
-          {LANGS[locale].flag}
+        <span className="flex size-5 items-center justify-center overflow-hidden rounded-full">
+          <CurrentFlag className="h-full w-full object-cover" />
         </span>
         <span className="font-mono text-[11px] tracking-[0.14em] uppercase">
           {LANGS[locale].code}
@@ -86,6 +93,7 @@ function LangSwitcher() {
         <p className="label-mono border-b border-line px-4 pt-3 pb-2.5">{dict.ui.langLabel}</p>
         {locales.map((l) => {
           const isActive = l === locale;
+          const FlagComponent = LANGS[l].FlagComponent;
           return (
             <a
               key={l}
@@ -98,8 +106,8 @@ function LangSwitcher() {
               }`}
             >
               <span className="flex items-center gap-3 text-[13.5px]">
-                <span className="flex size-6 items-center justify-center rounded-full bg-surface text-base leading-none">
-                  {LANGS[l].flag}
+                <span className="flex size-6 items-center justify-center overflow-hidden rounded-full">
+                  <FlagComponent className="h-full w-full object-cover" />
                 </span>
                 <span
                   className={`font-display italic transition-opacity duration-300 ${
