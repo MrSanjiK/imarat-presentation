@@ -35,6 +35,7 @@ const ar: Dict = {
     { id: "advantages", title: "المزايا" },
     { id: "founder", title: "المؤسس" },
     { id: "ambassadors", title: "السفراء" },
+    { id: "client-experience", title: "تجربة العملاء" },
     { id: "contact", title: "اتصل بنا" },
   ],
   hero: {

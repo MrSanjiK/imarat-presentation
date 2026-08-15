@@ -35,6 +35,7 @@ const ru: Dict = {
     { id: "advantages", title: "Преимущества" },
     { id: "founder", title: "Основатель" },
     { id: "ambassadors", title: "Амбассадоры" },
+    { id: "client-experience", title: "Опыт клиентов" },
     { id: "contact", title: "Контакты" },
   ],
   hero: {

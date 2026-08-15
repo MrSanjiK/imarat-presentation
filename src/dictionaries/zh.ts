@@ -35,6 +35,7 @@ const zh: Dict = {
     { id: "advantages", title: "优势" },
     { id: "founder", title: "创始人" },
     { id: "ambassadors", title: "品牌大使" },
+    { id: "client-experience", title: "客户体验" },
     { id: "contact", title: "联系我们" },
   ],
   hero: {

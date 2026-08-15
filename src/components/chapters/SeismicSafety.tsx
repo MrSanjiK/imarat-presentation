@@ -52,9 +52,9 @@ export default function SeismicSafety() {
       data-chapter="seismic-safety"
       className="relative overflow-hidden bg-[#0d0c0a] py-20 text-[#f2ede6] md:py-32"
     >
-      <div className="container mx-auto grid gap-8 px-5 md:grid-cols-2 md:gap-12 md:px-10 lg:gap-16">
+      <div className="container mx-auto grid gap-6 px-5 md:grid-cols-[1.2fr,1fr] md:gap-8 md:px-10 lg:gap-12">
         {/* Video */}
-        <div className="relative aspect-[9/16] overflow-hidden rounded-lg md:sticky md:top-24 md:h-[70vh]">
+        <div className="relative aspect-[9/16] overflow-hidden rounded-lg md:sticky md:top-20 md:h-[82vh]">
           <video
             className="h-full w-full object-cover"
             src={VIDEOS.seismicTest}

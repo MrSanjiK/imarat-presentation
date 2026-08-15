@@ -35,6 +35,7 @@ const uz: Dict = {
     { id: "advantages", title: "Ustunliklar" },
     { id: "founder", title: "Asoschi" },
     { id: "ambassadors", title: "Ambassadorlar" },
+    { id: "client-experience", title: "Mijozlar tajribasi" },
     { id: "contact", title: "Aloqa" },
   ],
   hero: {

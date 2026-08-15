@@ -35,6 +35,7 @@ const en: Dict = {
     { id: "advantages", title: "Advantages" },
     { id: "founder", title: "Founder" },
     { id: "ambassadors", title: "Ambassadors" },
+    { id: "client-experience", title: "Client Experience" },
     { id: "contact", title: "Contact" },
   ],
   hero: {
