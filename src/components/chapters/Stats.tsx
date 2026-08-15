@@ -5,6 +5,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
 import ChapterLabel from "@/components/ui/ChapterLabel";
+import RenderBackdrop, { RENDERS } from "@/components/ui/RenderBackdrop";
 
 export default function Stats() {
   const { dict, locale } = usePresentation();
@@ -46,28 +47,33 @@ export default function Stats() {
   );
 
   return (
-    <section
-      ref={root}
-      id="stats"
-      data-chapter="stats"
-      className="relative overflow-hidden bg-bg py-28 text-ink transition-colors duration-500 md:py-40"
+    <RenderBackdrop
+      videoSrc={RENDERS.ecoPark1}
+      posterSrc={RENDERS.ecoPark1Poster}
+      className="py-28 md:py-40"
     >
-      <div className="blueprint absolute inset-0 opacity-70" aria-hidden />
+      <section
+        ref={root}
+        id="stats"
+        data-chapter="stats"
+        className="relative overflow-hidden"
+      >
+        <div className="blueprint absolute inset-0 opacity-40" aria-hidden />
 
-      <div className="relative px-5 md:px-10 lg:pr-24">
-        <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
-          <div>
-            <ChapterLabel index="03" className="mb-6">
-              {dict.stats.label}
-            </ChapterLabel>
-            <h2 data-reveal className="font-display text-[clamp(2rem,5vw,4rem)] leading-tight">
-              {dict.stats.title}
-            </h2>
+        <div className="relative px-5 md:px-10 lg:pr-24">
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
+            <div>
+              <ChapterLabel index="04" className="mb-6">
+                {dict.stats.label}
+              </ChapterLabel>
+              <h2 data-reveal className="font-display text-[clamp(2rem,5vw,4rem)] leading-tight">
+                {dict.stats.title}
+              </h2>
+            </div>
+            <p data-reveal className="font-hand -rotate-3 text-2xl text-copper md:text-3xl">
+              {dict.stats.handwritten}
+            </p>
           </div>
-          <p data-reveal className="font-hand -rotate-3 text-2xl text-copper md:text-3xl">
-            {dict.stats.handwritten}
-          </p>
-        </div>
 
         <dl className="grid grid-cols-2 border-t border-l border-line lg:grid-cols-4">
           {dict.stats.items.map((item, i) => (
@@ -93,5 +99,6 @@ export default function Stats() {
         </p>
       </div>
     </section>
+    </RenderBackdrop>
   );
 }

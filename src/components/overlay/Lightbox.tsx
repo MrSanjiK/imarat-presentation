@@ -3,8 +3,16 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import type { ManifestImage } from "@/data/projects";
-import { projectImgSrc, projectImgSrcSet } from "@/lib/media";
+import { projectImgSrc, projectImgSrcSet, floorPlanSrc, floorPlanSrcSet } from "@/lib/media";
 import { usePresentation } from "@/components/PresentationShell";
+
+interface LightboxImage {
+  type: "project" | "floorplan";
+  n: string;
+  w: number;
+  h: number;
+  area?: string;
+}
 
 export default function Lightbox({
   slug,
@@ -14,7 +22,7 @@ export default function Lightbox({
   onClose,
 }: {
   slug: string;
-  images: ManifestImage[];
+  images: LightboxImage[];
   index: number;
   onIndex: (i: number) => void;
   onClose: () => void;
@@ -38,6 +46,14 @@ export default function Lightbox({
 
   if (!img || !mounted) return null;
 
+  const imgSrc = img.type === "floorplan"
+    ? floorPlanSrc(img.n, 1920)
+    : projectImgSrc(slug, img.n, 1920);
+
+  const imgSrcSet = img.type === "floorplan"
+    ? floorPlanSrcSet(img.n)
+    : projectImgSrcSet(slug, img.n);
+
   // portal to body — the overlay dialog is a transformed/scrolling container,
   // fixed positioning inside it would anchor to the container instead of viewport
   return createPortal(
@@ -48,9 +64,16 @@ export default function Lightbox({
       onClick={onClose}
     >
       <div className="flex items-center justify-between px-5 py-4 md:px-8">
-        <span className="font-mono text-xs tracking-[0.2em]">
-          {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
-        </span>
+        <div className="flex items-baseline gap-3">
+          <span className="font-mono text-xs tracking-[0.2em]">
+            {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+          </span>
+          {img.area && (
+            <span className="font-mono text-xs text-[#f2ede6]/60">
+              {img.area} m²
+            </span>
+          )}
+        </div>
         <button
           type="button"
           aria-label={dict.ui.close}
@@ -68,10 +91,10 @@ export default function Lightbox({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           key={img.n}
-          src={projectImgSrc(slug, img.n, 1920)}
-          srcSet={projectImgSrcSet(slug, img.n)}
+          src={imgSrc}
+          srcSet={imgSrcSet}
           sizes="92vw"
-          alt=""
+          alt={img.area ? `${dict.overlay.floorPlansTab} ${img.area} m²` : ""}
           draggable={false}
           onClick={(e) => e.stopPropagation()}
           className="max-h-[80vh] max-w-full object-contain"

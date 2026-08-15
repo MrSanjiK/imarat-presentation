@@ -7,6 +7,7 @@ import { setupReveals } from "@/lib/reveal";
 import { projectOrder, projectsMeta } from "@/data/projects";
 import { coverImage, projectImgSrc, projectImgSrcSet } from "@/lib/media";
 import ChapterLabel from "@/components/ui/ChapterLabel";
+import RenderBackdrop, { RENDERS } from "@/components/ui/RenderBackdrop";
 
 export default function Projects() {
   const { dict, openProject } = usePresentation();
@@ -21,12 +22,17 @@ export default function Projects() {
   );
 
   return (
-    <section
-      ref={root}
-      id="projects"
-      data-chapter="projects"
-      className="relative bg-bg text-ink transition-colors duration-500"
+    <RenderBackdrop
+      videoSrc={RENDERS.bristolSeq}
+      posterSrc={RENDERS.bristolSeqPoster}
+      className="py-0"
     >
+      <section
+        ref={root}
+        id="projects"
+        data-chapter="projects"
+        className="relative"
+      >
       <div className="px-5 pt-28 md:px-10 md:pt-40 lg:pr-24">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-6 md:mb-10">
           <div>
@@ -92,7 +98,8 @@ export default function Projects() {
         </div>
 
         {/* index list */}
-        <div className="px-5 pt-6 pb-28 md:px-10 lg:pt-10 lg:pr-20 lg:pl-0">
+        {/* min-w-0: grid items refuse to shrink below the nowrap tagline otherwise */}
+        <div className="min-w-0 px-5 pt-6 pb-28 md:px-10 lg:pt-10 lg:pr-20 lg:pl-0">
           <ul className="border-t border-line">
             {projectOrder.map((slug, i) => {
               const meta = projectsMeta[slug];
@@ -108,7 +115,7 @@ export default function Projects() {
                     onMouseEnter={() => setHovered(i)}
                     onFocus={() => setHovered(i)}
                     aria-label={`${copy?.name} — ${dict.ui.openProject}`}
-                    className="group flex w-full items-center gap-4 py-5 text-left md:gap-7 md:py-7"
+                    className="group flex w-full items-center gap-3 py-5 text-left md:gap-7 md:py-7"
                   >
                     {/* mobile thumb */}
                     {cover && (
@@ -119,7 +126,7 @@ export default function Projects() {
                         loading="lazy"
                         decoding="async"
                         draggable={false}
-                        className="h-14 w-20 shrink-0 rounded-sm object-cover lg:hidden"
+                        className="h-12 w-16 shrink-0 rounded-sm object-cover lg:hidden"
                       />
                     )}
                     <span className="label-mono w-8 shrink-0 !text-copper">{meta.num}</span>
@@ -157,5 +164,6 @@ export default function Projects() {
         </div>
       </div>
     </section>
+    </RenderBackdrop>
   );
 }

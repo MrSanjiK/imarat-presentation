@@ -93,6 +93,18 @@ const topVideos = {
   "process-desktop": { src: P("building_proccess_desktop.mp4"), box: 1920, crf: 24 },
   "process-mobile": { src: P("building_proccess_mobile.mp4"), box: 1920, crf: 24 },
   drone: { src: P("Shut from drone.mp4"), box: 1920, crf: 24 },
+  // NEW folder additions
+  "seismic-test": { src: P("NEW", "Imarat Development Sergeli City loyihasidagi 8 ballik suniy Zilzila sinovi.mp4"), box: 1920, crf: 24, keepAudio: true },
+  "marketing-reel": { src: P("NEW", "Imarat Development reklamniy rolik Final_1.mp4"), box: 1920, crf: 26 },
+};
+
+// Render videos for scroll backdrops (NEW folder)
+const renderVideos = {
+  "bristol-seq": { src: P("NEW", "render videolar", "Bristol Sequence 02.mp4"), box: 1920, crf: 24 },
+  "bristol-main": { src: P("NEW", "render videolar", "Bristol video.mp4"), box: 1920, crf: 24 },
+  "eco-park-1": { src: P("NEW", "render videolar", "Eco park(Full HD).mp4"), box: 1920, crf: 24 },
+  "eco-park-2": { src: P("NEW", "render videolar", "Eco PARK2(Full HD).mp4"), box: 1920, crf: 24 },
+  "eco-park-3": { src: P("NEW", "render videolar", "Eco park_(Full HD).mp4"), box: 1920, crf: 24 },
 };
 
 const peopleSources = {
@@ -115,6 +127,83 @@ const adsSources = {
   metro: P("Ads materials", "Yangi metro bekati Sergeli city va eco park loyihalari yonida Artboard 2.png"),
   highway: P("Ads materials", "Yangi Magistral yo'l (trassa) Sergeli city va eco park loyihalari yonida Artboard 3.png"),
 };
+
+// Floor plans (3D renders only) from NEW folder
+const floorPlanSources = [
+  { file: P("NEW", "2. Планировка (визуал)- 79,4 кв.м_1.png"), area: "79.4" },
+  { file: P("NEW", "Планировка (визуал) - 14 - 80,26 кв.м. .png"), area: "80.26" },
+  { file: P("NEW", "8. Планировка (визуал) - 76,26 кв.м. .png"), area: "76.26" },
+  { file: P("NEW", "6. Планировка (визуал) 68,63 кв.м. .png"), area: "68.63" },
+  { file: P("NEW", "12. Планировка (визуал) - 62,1  кв.м. .png"), area: "62.1" },
+  { file: P("NEW", "10. Планировка (визуал) - 58,3 кв.м. .jpeg"), area: "58.3" },
+  { file: P("NEW", "15_Планировка_визуал_52,76_кв_м_—_копия.png"), area: "52.76" },
+  { file: P("NEW", "13_Планировка_визуал_45,3_кв_м_jpg.png"), area: "45.3" },
+  { file: P("NEW", "11_Планировка_визуал_38,8_кв_м_jpg_2.png"), area: "38.8" },
+  { file: P("NEW", "7. Планировка (визуал) - 28,5 кв.м. .png"), area: "28.5" },
+  { file: P("NEW", "4. Планировка (визуал) 23,03 кв.м .jpg"), area: "23.03" },
+  { file: P("NEW", "9. Планировка (визуал) - 21,86 кв.м. .jpg"), area: "21.86" },
+  { file: P("NEW", "3. Планировка (визуал) - 21,8 кв.м. .png"), area: "21.8" },
+];
+
+// Client excursion media from NEW folder (19 MOV videos + 33 DNG photos in root)
+const excursionVideoSources = [
+  P("NEW", "IMG_6114.MOV"),
+  P("NEW", "IMG_6115.MOV"),
+  P("NEW", "IMG_6121.MOV"),
+  P("NEW", "IMG_6129.MOV"),
+  P("NEW", "IMG_6132.MOV"),
+  P("NEW", "IMG_6135.MOV"),
+  P("NEW", "IMG_6138.MOV"),
+  P("NEW", "IMG_6146.MOV"),
+  P("NEW", "IMG_6149.MOV"),
+  P("NEW", "IMG_6155.MOV"),
+  P("NEW", "IMG_6156.MOV"),
+  P("NEW", "IMG_6159.MOV"),
+  P("NEW", "IMG_6166.MOV"),
+  P("NEW", "IMG_6167.MOV"),
+  P("NEW", "IMG_6201.MOV"),
+  P("NEW", "IMG_6207.MOV"),
+  P("NEW", "IMG_6223.MOV"),
+  P("NEW", "IMG_7665.MOV"),
+  P("NEW", "IMG_7762.MOV"),
+];
+
+const excursionPhotoSources = [
+  P("NEW", "IMG_7611.DNG"),
+  P("NEW", "IMG_7612.DNG"),
+  P("NEW", "IMG_7614.DNG"),
+  P("NEW", "IMG_7615.DNG"),
+  P("NEW", "IMG_7619.DNG"),
+  P("NEW", "IMG_7625.DNG"),
+  P("NEW", "IMG_7626.DNG"),
+  P("NEW", "IMG_7634.DNG"),
+  P("NEW", "IMG_7635.DNG"),
+  P("NEW", "IMG_7636.DNG"),
+  P("NEW", "IMG_7651.DNG"),
+  P("NEW", "IMG_7652.DNG"),
+  P("NEW", "IMG_7653.DNG"),
+  P("NEW", "IMG_7657.DNG"),
+  P("NEW", "IMG_7658.DNG"),
+  P("NEW", "IMG_7660.DNG"),
+  P("NEW", "IMG_7661.DNG"),
+  P("NEW", "IMG_7663.DNG"),
+  P("NEW", "IMG_7664.DNG"),
+  P("NEW", "IMG_7666.DNG"),
+  P("NEW", "IMG_7667.DNG"),
+  P("NEW", "IMG_7671.DNG"),
+  P("NEW", "IMG_7672.DNG"),
+  P("NEW", "IMG_7673.DNG"),
+  P("NEW", "IMG_7674.DNG"),
+  P("NEW", "IMG_7709.DNG"),
+  P("NEW", "IMG_7714.DNG"),
+  P("NEW", "IMG_7726.DNG"),
+  P("NEW", "IMG_7728.DNG"),
+  P("NEW", "IMG_7729.DNG"),
+  P("NEW", "IMG_7746.DNG"),
+  P("NEW", "IMG_7747.DNG"),
+  P("NEW", "IMG_7761.DNG"),
+];
+
 
 const logoSources = {
   imarat: {
@@ -232,28 +321,45 @@ function runFfmpeg(args) {
 
 async function transcodeVideo(src, dest, { box = 1280, crf = 28, keepAudio = false } = {}) {
   if (!existsSync(dest)) {
-    runFfmpeg([
-      "-y",
-      "-i", src,
-      "-vf", `scale=w=${box}:h=${box}:force_original_aspect_ratio=decrease:force_divisible_by=2`,
-      "-c:v", "libx264",
-      "-crf", String(crf),
-      "-preset", "slow",
-      "-pix_fmt", "yuv420p",
-      ...(keepAudio ? ["-c:a", "aac", "-b:a", "128k"] : ["-an"]),
-      "-movflags", "+faststart",
-      dest,
-    ]);
+    try {
+      runFfmpeg([
+        "-y",
+        "-i", src,
+        "-vf", `scale=w=${box}:h=${box}:force_original_aspect_ratio=decrease:force_divisible_by=2`,
+        "-c:v", "libx264",
+        "-crf", String(crf),
+        "-preset", "medium",
+        "-pix_fmt", "yuv420p",
+        ...(keepAudio ? ["-c:a", "aac", "-b:a", "128k"] : ["-an"]),
+        "-movflags", "+faststart",
+        dest,
+      ]);
+    } catch (e) {
+      log(`!! video encode failed: ${path.basename(src)} - ${e.message}`);
+      // Remove incomplete file
+      try {
+        const { unlinkSync } = await import("node:fs");
+        if (existsSync(dest)) unlinkSync(dest);
+      } catch {}
+      return { w: 0, h: 0 };
+    }
   }
   const poster = dest.replace(/\.mp4$/, "-poster.jpg");
   const posterWebp = dest.replace(/\.mp4$/, "-poster.webp");
   if (!existsSync(posterWebp)) {
-    runFfmpeg(["-y", "-ss", "0.6", "-i", dest, "-frames:v", "1", "-q:v", "2", poster]);
-    await sharp(poster).webp({ quality: 72 }).toFile(posterWebp);
     try {
-      const { unlinkSync } = await import("node:fs");
-      unlinkSync(poster);
-    } catch {}
+      runFfmpeg(["-y", "-ss", "0.6", "-i", dest, "-frames:v", "1", "-q:v", "2", poster]);
+      await sharp(poster).webp({ quality: 72 }).toFile(posterWebp);
+      try {
+        const { unlinkSync } = await import("node:fs");
+        unlinkSync(poster);
+      } catch {}
+    } catch (e) {
+      log(`!! poster generation failed: ${path.basename(dest)}`);
+    }
+  }
+  if (!existsSync(posterWebp)) {
+    return { w: 0, h: 0 };
   }
   const meta = await sharp(posterWebp).metadata();
   return { w: meta.width ?? 0, h: meta.height ?? 0 };
@@ -305,7 +411,7 @@ async function main() {
   log("output:", OUT);
   if (!ffmpegPath) throw new Error("ffmpeg-static binary not found");
 
-  const manifest = { projects: {}, people: {}, ceo: [], ads: [], videos: {} };
+  const manifest = { projects: {}, people: {}, ceo: [], ads: [], videos: {}, renders: {}, floorPlans: [], excursion: { videos: [], photos: [] } };
 
   /* logos */
   log("— logos");
@@ -377,6 +483,20 @@ async function main() {
     log(`   ${name} ${dims.w}x${dims.h}`);
   }
 
+  /* render videos for backdrops */
+  log("— render videos (NEW folder)");
+  ensure(path.join(OUT, "renders"));
+  for (const [name, cfg] of Object.entries(renderVideos)) {
+    if (!existsSync(cfg.src)) {
+      log("!! render video missing:", cfg.src);
+      continue;
+    }
+    const dims = await transcodeVideo(cfg.src, path.join(OUT, "renders", `${name}.mp4`), cfg);
+    if (!manifest.renders) manifest.renders = {};
+    manifest.renders[name] = dims;
+    log(`   render/${name} ${dims.w}x${dims.h}`);
+  }
+
   /* catalogs */
   log("— catalogs (PDF → pages)");
   for (const [slug, pdfPath] of Object.entries(catalogSources)) {
@@ -426,6 +546,53 @@ async function main() {
     const dims = await convertImage(src, path.join(OUT, "ads", id), { sizes: [640, 1280], quality: 76 });
     manifest.ads.push({ n: id, ...dims });
   }
+
+  /* floor plans (3D visualizations) */
+  log("— floor plans (3D renders)");
+  ensure(path.join(OUT, "floorplans"));
+  for (let i = 0; i < floorPlanSources.length; i++) {
+    const { file, area } = floorPlanSources[i];
+    if (!existsSync(file)) {
+      log("!! floor plan missing:", file);
+      continue;
+    }
+    const n = `plan-${String(i + 1).padStart(2, "0")}`;
+    const dims = await convertImage(file, path.join(OUT, "floorplans", n), { sizes: [640, 1280, 1920], quality: 82 });
+    manifest.floorPlans.push({ n, area, ...dims });
+  }
+  log(`   ${manifest.floorPlans.length} floor plans processed`);
+
+  /* client excursion videos */
+  log("— client excursion videos");
+  ensure(path.join(OUT, "excursion"));
+  for (let i = 0; i < excursionVideoSources.length; i++) {
+    const src = excursionVideoSources[i];
+    if (!existsSync(src)) {
+      log("!! excursion video missing:", src);
+      continue;
+    }
+    const n = `video-${String(i + 1).padStart(2, "0")}`;
+    const dest = path.join(OUT, "excursion", `${n}.mp4`);
+    const dims = await transcodeVideo(src, dest, { box: 1280, crf: 28 });
+    if (dims.w > 0) {
+      manifest.excursion.videos.push({ n, ...dims });
+    }
+  }
+  log(`   ${manifest.excursion.videos.length} excursion videos processed`);
+
+  /* client excursion photos (DNG → WebP) */
+  log("— client excursion photos (DNG)");
+  for (let i = 0; i < excursionPhotoSources.length; i++) {
+    const src = excursionPhotoSources[i];
+    if (!existsSync(src)) {
+      log("!! excursion photo missing:", src);
+      continue;
+    }
+    const n = `photo-${String(i + 1).padStart(2, "0")}`;
+    const dims = await convertImage(src, path.join(OUT, "excursion", n), { sizes: [640, 1280, 1920], quality: 80 });
+    manifest.excursion.photos.push({ n, ...dims });
+  }
+  log(`   ${manifest.excursion.photos.length} excursion photos processed`);
 
   /* favicon + og */
   log("— favicon & og image");

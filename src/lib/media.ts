@@ -76,6 +76,23 @@ export const VIDEOS = {
   processMobilePoster: "/media/videos/process-mobile-poster.webp",
   drone: "/media/videos/drone.mp4",
   dronePoster: "/media/videos/drone-poster.webp",
+  seismicTest: "/media/videos/seismic-test.mp4",
+  seismicTestPoster: "/media/videos/seismic-test-poster.webp",
+  marketingReel: "/media/videos/marketing-reel.mp4",
+  marketingReelPoster: "/media/videos/marketing-reel-poster.webp",
+};
+
+export const RENDERS = {
+  bristolSeq: "/media/renders/bristol-seq.mp4",
+  bristolSeqPoster: "/media/renders/bristol-seq-poster.webp",
+  bristolMain: "/media/renders/bristol-main.mp4",
+  bristolMainPoster: "/media/renders/bristol-main-poster.webp",
+  ecoPark1: "/media/renders/eco-park-1.mp4",
+  ecoPark1Poster: "/media/renders/eco-park-1-poster.webp",
+  ecoPark2: "/media/renders/eco-park-2.mp4",
+  ecoPark2Poster: "/media/renders/eco-park-2-poster.webp",
+  ecoPark3: "/media/renders/eco-park-3.mp4",
+  ecoPark3Poster: "/media/renders/eco-park-3-poster.webp",
 };
 
 export const LOGOS = {
@@ -83,3 +100,26 @@ export const LOGOS = {
   white: "/media/logos/imarat-white.webp",
   dark: "/media/logos/imarat-dark.webp",
 };
+
+export function floorPlanSrc(n: string, size: 640 | 1280 | 1920 = 1280): string {
+  return `/media/floorplans/${n}_${size}.webp`;
+}
+
+export function floorPlanSrcSet(n: string): string {
+  return `${floorPlanSrc(n, 640)} 640w, ${floorPlanSrc(n, 1280)} 1280w, ${floorPlanSrc(n, 1920)} 1920w`;
+}
+
+export function excursionVideoSources(n: string) {
+  return {
+    video: `/media/excursion/${n}.mp4`,
+    poster: `/media/excursion/${n}-poster.webp`,
+  };
+}
+
+export function excursionPhotoSrc(n: string, size: 640 | 1280 | 1920 = 1280): string {
+  return `/media/excursion/${n}_${size}.webp`;
+}
+
+export function excursionPhotoSrcSet(n: string): string {
+  return `${excursionPhotoSrc(n, 640)} 640w, ${excursionPhotoSrc(n, 1280)} 1280w, ${excursionPhotoSrc(n, 1920)} 1920w`;
+}

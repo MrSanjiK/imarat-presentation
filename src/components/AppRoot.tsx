@@ -31,14 +31,17 @@ const plexMono = IBM_Plex_Mono({
 
 export default function AppRoot({
   lang,
+  dir,
   children,
 }: {
   lang: Locale;
+  dir?: "ltr" | "rtl";
   children: React.ReactNode;
 }) {
   return (
     <html
       lang={lang}
+      dir={dir || "ltr"}
       suppressHydrationWarning
       className={`${playfair.variable} ${manrope.variable} ${caveat.variable} ${plexMono.variable}`}
     >

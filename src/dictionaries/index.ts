@@ -1,4 +1,4 @@
-export type Locale = "uz" | "ru" | "en";
+export type Locale = "uz" | "ru" | "en" | "ar" | "zh";
 
 export interface ProjectCopy {
   name: string;
@@ -49,6 +49,19 @@ export interface Dict {
     body2: string;
     badge: string;
   };
+  seismic: {
+    label: string;
+    badge: string;
+    title: string;
+    body1: string;
+    body2: string;
+    stat1: string;
+    stat2: string;
+    partnersTitle: string;
+    partner1: string;
+    partner2: string;
+    partner3: string;
+  };
   stats: {
     label: string;
     title: string;
@@ -66,6 +79,7 @@ export interface Dict {
     gallery: string;
     catalog: string;
     constructionTab: string;
+    floorPlansTab: string;
     locationStrip: string;
     featuresLabel: string;
     aboutLabel: string;
@@ -73,6 +87,7 @@ export interface Dict {
     ctaBody: string;
     catalogHint: string;
     pageOf: string;
+    areaLabel: string;
   };
   process: {
     label: string;
@@ -110,6 +125,14 @@ export interface Dict {
     founderBadge: string;
     people: { id: string; name: string; role: string }[];
   };
+  clientExperience: {
+    label: string;
+    title: string;
+    sub: string;
+    handwritten: string;
+    photoAlt: string;
+    hint: string;
+  };
   contact: {
     label: string;
     title: string;
@@ -133,16 +156,20 @@ export interface Dict {
   projects: Record<string, ProjectCopy>;
 }
 
-export const locales: Locale[] = ["uz", "ru", "en"];
+export const locales: Locale[] = ["uz", "ru", "en", "ar", "zh"];
 
 export const localeNames: Record<Locale, string> = {
   uz: "O'z",
   ru: "Ру",
   en: "En",
+  ar: "Ar",
+  zh: "中",
 };
 
 export const localePaths: Record<Locale, string> = {
   uz: "/",
   ru: "/ru",
   en: "/en",
+  ar: "/ar",
+  zh: "/zh",
 };

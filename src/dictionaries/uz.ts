@@ -28,6 +28,7 @@ const uz: Dict = {
   chapters: [
     { id: "intro", title: "Kirish" },
     { id: "manifesto", title: "Manifest" },
+    { id: "seismic-safety", title: "Xavfsizlik" },
     { id: "stats", title: "Raqamlar" },
     { id: "projects", title: "Loyihalar" },
     { id: "process", title: "Jarayon" },
@@ -58,6 +59,21 @@ const uz: Dict = {
       "Biz shunchaki uy qurmaymiz — sifatli hayot tarzi uchun sharoit yaratamiz. Maqsadimiz — xalqimiz xotirasida ishonchli va qadrlanadigan kompaniya sifatida qolish.",
     badge: "2021-yildan buyon",
   },
+  seismic: {
+    label: "Xavfsizlik",
+    badge: "Sertifikatlangan",
+    title: "Xavfsizlik — birinchi o'rinda",
+    body1:
+      "BMTning Markaziy Osiyoda kuchli zilzilalar xavfi haqidagi ogohlantirishidan so'ng, IMARAT kompaniyasi Sergeli City loyihasida seysmik sinov o'tkazdi. Maxsus vibratsion-dinamik uskunalar yordamida 8–9 ballgacha zilzilani taqlid qiluvchi sun'iy tebranishlar hosil qilindi.",
+    body2:
+      "Jarayonni Seysmologiya instituti hamda Yaponiyalik mutaxassislar kuzatib bordi. Qizig'i — sinov vaqtida kompaniya rahbari Marat Xayrullayevich binoning ichida bo'lgan.",
+    stat1: "Ball zilzila",
+    stat2: "Bardoshli",
+    partnersTitle: "Hamkorlar",
+    partner1: "Seysmologiya instituti",
+    partner2: "Yaponiyalik mutaxassislar",
+    partner3: "CEO sinov ichida bo'lgan",
+  },
   stats: {
     label: "Raqamlar",
     title: "Raqamlar o'zi so'zlaydi",
@@ -84,6 +100,7 @@ const uz: Dict = {
     gallery: "Galereya",
     catalog: "Katalog",
     constructionTab: "Qurilish jarayoni",
+    floorPlansTab: "Planirovkalar",
     locationStrip: "Atrof-muhit rivoji",
     featuresLabel: "Xususiyatlar",
     aboutLabel: "Loyiha haqida",
@@ -91,6 +108,7 @@ const uz: Dict = {
     ctaBody: "Sotuv ofisi bilan bog'laning — mutaxassislarimiz sizga mos to'lov rejasini hisoblab beradi.",
     catalogHint: "Sahifalarni varaqlash uchun suring",
     pageOf: "/",
+    areaLabel: "Maydoni",
   },
   process: {
     label: "Jarayon",
@@ -178,6 +196,14 @@ const uz: Dict = {
       { id: "abror", name: "Abror Muxtor Aliy", role: "Jamoatchilik faoli" },
       { id: "shaxzoda", name: "Shaxzoda Muhammedova", role: "Dizayner, aktrisa" },
     ],
+  },
+  clientExperience: {
+    label: "Mijozlar tajribasi",
+    title: "Loyihalarimizga ekskursiyalar",
+    sub: "Mijozlarimiz bilan birga loyihalarimizni ko'rib chiqamiz — haqiqiy qurilish jarayoni, tayyor uylar va xursand oilalar.",
+    handwritten: "Sizni kutamiz",
+    photoAlt: "Mijozlar ekskursiyasi",
+    hint: "19 video va 33 fotosuratdan iborat galereya",
   },
   contact: {
     label: "Aloqa",

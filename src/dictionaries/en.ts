@@ -28,6 +28,7 @@ const en: Dict = {
   chapters: [
     { id: "intro", title: "Intro" },
     { id: "manifesto", title: "Manifesto" },
+    { id: "seismic-safety", title: "Safety" },
     { id: "stats", title: "Numbers" },
     { id: "projects", title: "Projects" },
     { id: "process", title: "Process" },
@@ -58,6 +59,21 @@ const en: Dict = {
       "We don't just build homes — we create the conditions for a quality way of life. Our goal is to be remembered by our people as a trusted, respected company.",
     badge: "Since 2021",
   },
+  seismic: {
+    label: "Safety",
+    badge: "Certified",
+    title: "Safety First",
+    body1:
+      "Following the UN warning about strong earthquake risks in Central Asia, IMARAT conducted seismic testing at the Sergeli City project. Special vibration-dynamic equipment was used to create artificial oscillations simulating an 8-9 magnitude earthquake.",
+    body2:
+      "The process was monitored by the Institute of Seismology and Japanese experts. Interestingly, company CEO Marat Khayrullayevich was inside the building during the test.",
+    stat1: "Magnitude earthquake",
+    stat2: "Resistance",
+    partnersTitle: "Partners",
+    partner1: "Institute of Seismology",
+    partner2: "Japanese experts",
+    partner3: "CEO was inside during test",
+  },
   stats: {
     label: "Numbers",
     title: "The numbers speak",
@@ -84,6 +100,7 @@ const en: Dict = {
     gallery: "Gallery",
     catalog: "Catalogue",
     constructionTab: "Construction progress",
+    floorPlansTab: "Floor Plans",
     locationStrip: "Area development",
     featuresLabel: "Highlights",
     aboutLabel: "About the project",
@@ -91,6 +108,7 @@ const en: Dict = {
     ctaBody: "Contact our sales office — our specialists will tailor a payment plan for you.",
     catalogHint: "Swipe through the catalogue pages",
     pageOf: "/",
+    areaLabel: "Area",
   },
   process: {
     label: "Process",
@@ -178,6 +196,14 @@ const en: Dict = {
       { id: "abror", name: "Abror Mukhtor Aliy", role: "Public figure" },
       { id: "shaxzoda", name: "Shakhzoda Muhammedova", role: "Designer, actress" },
     ],
+  },
+  clientExperience: {
+    label: "Client Experience",
+    title: "Tours of our projects",
+    sub: "Together with our clients, we tour our projects — real construction process, finished homes, and happy families.",
+    handwritten: "Waiting for you",
+    photoAlt: "Client tour",
+    hint: "Gallery of 19 videos and 33 photos",
   },
   contact: {
     label: "Contact",

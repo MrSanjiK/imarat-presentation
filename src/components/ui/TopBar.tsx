@@ -2,16 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
-import { useLenis } from "lenis/react";
 import { usePresentation } from "@/components/PresentationShell";
 import { localePaths, locales, type Locale } from "@/dictionaries";
 import { LOGOS } from "@/lib/media";
 import Magnetic from "@/components/ui/Magnetic";
 
-const LANGS: Record<Locale, { native: string; code: string }> = {
-  uz: { native: "O'zbekcha", code: "Uz" },
-  ru: { native: "Русский", code: "Ру" },
-  en: { native: "English", code: "En" },
+const LANGS: Record<Locale, { native: string; code: string; flag: string }> = {
+  uz: { native: "O'zbekcha", code: "Uz", flag: "🇺🇿" },
+  ru: { native: "Русский", code: "Ру", flag: "🇷🇺" },
+  en: { native: "English", code: "En", flag: "🇬🇧" },
+  ar: { native: "العربية", code: "Ar", flag: "🇸🇦" },
+  zh: { native: "中文", code: "中", flag: "🇨🇳" },
 };
 
 const PhoneIcon = ({ className = "size-3" }: { className?: string }) => (
@@ -50,15 +51,14 @@ function LangSwitcher() {
         aria-expanded={open}
         aria-label={dict.ui.langLabel}
         onClick={() => setOpen((o) => !o)}
-        className={`group flex h-9 items-center gap-2 rounded-full border py-2 pr-2.5 pl-3.5 transition-colors duration-300 ${
+        className={`group flex h-9 items-center gap-2 rounded-full border py-2 pr-2.5 pl-3 transition-colors duration-300 ${
           open ? "border-copper text-copper" : "border-line hover:border-copper"
         }`}
       >
-        {/* globe */}
-        <svg viewBox="0 0 24 24" className="size-3.5 text-copper" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
-        </svg>
+        {/* flag circle */}
+        <span className="flex size-5 items-center justify-center rounded-full bg-surface text-sm leading-none">
+          {LANGS[locale].flag}
+        </span>
         <span className="font-mono text-[11px] tracking-[0.14em] uppercase">
           {LANGS[locale].code}
         </span>
@@ -97,7 +97,10 @@ function LangSwitcher() {
                 isActive ? "bg-copper-soft text-copper" : "text-ink-soft hover:bg-copper-soft/40 hover:text-ink"
               }`}
             >
-              <span className="flex items-baseline gap-2.5 text-[13.5px]">
+              <span className="flex items-center gap-3 text-[13.5px]">
+                <span className="flex size-6 items-center justify-center rounded-full bg-surface text-base leading-none">
+                  {LANGS[l].flag}
+                </span>
                 <span
                   className={`font-display italic transition-opacity duration-300 ${
                     isActive ? "opacity-100" : "opacity-0 group-hover/item:opacity-50"
@@ -164,16 +167,39 @@ function ThemeToggle() {
 export default function TopBar() {
   const { dict, locale } = usePresentation();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
 
-  useLenis(({ scroll }) => {
-    setScrolled(scroll > 40);
-  });
+  /* native scroll listener — fires for wheel (lenis-driven), touch and
+     programmatic scrolling alike, on every browser/WebView */
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        setScrolled(y > 40);
+        const delta = y - lastY.current;
+        if (Math.abs(delta) > 8) {
+          setHidden(delta > 0 && y > 160);
+          lastY.current = y;
+        }
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-[120] transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-[120] transition-[translate,background-color,border-color] duration-500 ease-[var(--ease-out-expo)] ${
         scrolled ? "glass border-b border-line" : ""
-      }`}
+      } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
       <div className="flex h-16 items-center justify-between gap-3 px-4 md:h-20 md:px-10">
         <a

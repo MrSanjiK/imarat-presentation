@@ -110,13 +110,20 @@ export default function Process() {
               <span
                 data-title-a
                 className="video-outline block text-[clamp(2.4rem,7vw,6rem)] tracking-tight"
-                style={{ WebkitTextStroke: "1.2px rgba(242,237,230,0.92)", color: "transparent" }}
+                style={{
+                  WebkitTextStroke: "1.8px rgba(13,12,10,0.85)",
+                  color: "transparent",
+                  paintOrder: "stroke fill"
+                }}
               >
                 {dict.process.titleA}
               </span>
               <span
                 data-title-b
                 className="video-text-strong block text-[clamp(2.4rem,7vw,6rem)] italic"
+                style={{
+                  WebkitTextStroke: "0.8px rgba(13,12,10,0.4)",
+                }}
               >
                 {dict.process.titleB}
               </span>
@@ -124,14 +131,23 @@ export default function Process() {
           </div>
 
           <div data-bottom className="flex flex-wrap items-end justify-between gap-4 md:gap-6">
-            <p className="video-text max-w-md text-[13px] leading-relaxed text-[#f2ede6]/85 md:text-[15px]">
+            <p
+              className="video-text max-w-md text-[13px] leading-relaxed text-[#f2ede6] md:text-[15px]"
+              style={{
+                textShadow: "0 2px 6px rgba(0,0,0,0.8), 0 4px 32px rgba(0,0,0,0.7)",
+                WebkitTextStroke: "0.3px rgba(0,0,0,0.5)",
+              }}
+            >
               {dict.process.body}
             </p>
             <ul className="flex flex-wrap gap-1.5 md:gap-2">
               {dict.process.chips.map((chip) => (
                 <li
                   key={chip}
-                  className="video-text rounded-full border border-[#f2ede6]/30 bg-black/20 px-3 py-1.5 font-mono text-[9px] tracking-[0.16em] text-[#f2ede6]/90 uppercase backdrop-blur-sm md:px-4 md:py-2 md:text-[10px]"
+                  className="video-text rounded-full border border-[#0d0c0a]/60 bg-[#0d0c0a]/50 px-3 py-1.5 font-mono text-[9px] tracking-[0.16em] text-[#f2ede6] uppercase backdrop-blur-md md:px-4 md:py-2 md:text-[10px]"
+                  style={{
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(242,237,230,0.1)",
+                  }}
                 >
                   {chip}
                 </li>

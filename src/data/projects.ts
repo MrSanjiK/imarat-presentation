@@ -141,6 +141,12 @@ export interface MediaManifest {
   ceo: { n: string; w: number; h: number }[];
   ads: { n: string; w: number; h: number }[];
   videos: Record<string, { w: number; h: number }>;
+  renders: Record<string, { w: number; h: number }>;
+  floorPlans: { n: string; area: string; w: number; h: number }[];
+  excursion: {
+    videos: { n: string; w: number; h: number }[];
+    photos: { n: string; w: number; h: number }[];
+  };
 }
 
 export function imgSrc(slug: string, n: string, size: 640 | 1280 | 1920 = 1280) {

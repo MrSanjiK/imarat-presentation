@@ -31,6 +31,12 @@ export default function ProjectOverlay({ slug }: { slug: string }) {
   const catalog = data?.catalog;
   const cover = images[0];
 
+  // Combined lightbox images: project gallery + floor plans
+  const lightboxImages = [
+    ...images.map((img) => ({ type: "project" as const, n: img.n, w: img.w, h: img.h })),
+    ...MEDIA.floorPlans.map((plan) => ({ type: "floorplan" as const, n: plan.n, w: plan.w, h: plan.h, area: plan.area })),
+  ];
+
   /* entry animation */
   useGSAP(
     () => {
@@ -93,6 +99,7 @@ export default function ProjectOverlay({ slug }: { slug: string }) {
   const anchors = [
     { id: "ov-gallery", label: dict.overlay.gallery, show: images.length > 0 },
     { id: "ov-catalog", label: dict.overlay.catalog, show: !!catalog },
+    { id: "ov-floorplans", label: dict.overlay.floorPlansTab, show: MEDIA.floorPlans.length > 0 },
     { id: "ov-clips", label: dict.overlay.constructionTab, show: clips.length > 0 },
     { id: "ov-location", label: dict.overlay.locationStrip, show: meta.hasLocationStrip },
   ].filter((a) => a.show);
@@ -257,6 +264,48 @@ export default function ProjectOverlay({ slug }: { slug: string }) {
           </div>
         )}
 
+        {/* floor plans */}
+        {MEDIA.floorPlans.length > 0 && (
+          <div id="ov-floorplans" data-ov className="mt-16 scroll-mt-24 md:mt-20">
+            <p className="label-mono mb-5">{dict.overlay.floorPlansTab}</p>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+              {MEDIA.floorPlans.map((plan) => (
+                <button
+                  key={plan.n}
+                  type="button"
+                  onClick={() => {
+                    const idx = images.length + MEDIA.floorPlans.findIndex((p) => p.n === plan.n);
+                    setLightbox(idx);
+                  }}
+                  className="group relative overflow-hidden border border-line bg-surface-2 transition-all hover:border-copper"
+                  style={{ aspectRatio: `${plan.w} / ${plan.h}` }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/media/floorplans/${plan.n}_640.webp`}
+                    srcSet={`/media/floorplans/${plan.n}_640.webp 640w, /media/floorplans/${plan.n}_1280.webp 1280w, /media/floorplans/${plan.n}_1920.webp 1920w`}
+                    sizes="(min-width:1024px) 22vw, (min-width:768px) 30vw, 46vw"
+                    alt={`${dict.overlay.floorPlansTab} ${plan.area} m²`}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-2 left-2 right-2 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <p className="font-mono text-xs font-semibold text-white">
+                      {plan.area} m²
+                    </p>
+                    <p className="font-mono text-[10px] text-white/70">
+                      {dict.overlay.areaLabel}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* construction clips */}
         {clips.length > 0 && (
           <div id="ov-clips" data-ov className="mt-16 scroll-mt-24 md:mt-20">
@@ -335,7 +384,7 @@ export default function ProjectOverlay({ slug }: { slug: string }) {
       {lightbox !== null && (
         <Lightbox
           slug={slug}
-          images={images}
+          images={lightboxImages}
           index={lightbox}
           onIndex={setLightbox}
           onClose={() => setLightbox(null)}
