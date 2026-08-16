@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import { RENDERS } from "@/lib/media";
 
 interface RenderBackdropProps {
@@ -18,6 +19,7 @@ export default function RenderBackdrop({
   className = "",
 }: RenderBackdropProps) {
   const root = useRef<HTMLDivElement>(null);
+  const videoRef = useAutoplayVideo();
 
   useGSAP(
     () => {
@@ -63,6 +65,7 @@ export default function RenderBackdrop({
         className="absolute inset-0 -z-10 will-change-[transform,opacity]"
       >
         <video
+          ref={videoRef}
           className="h-full w-full object-cover"
           src={videoSrc}
           poster={posterSrc}

@@ -105,7 +105,7 @@ export default function Process() {
         {/* text overlay */}
         <div className="relative z-10 flex h-full w-full flex-col justify-between px-5 pt-24 pb-10 text-[#f2ede6] md:px-10 md:pt-28 md:pb-14">
           <p className="label-mono video-text !text-[#f2ede6]/70">
-            05 — {dict.process.label}
+            07 — {dict.process.label}
           </p>
 
           <div className="text-center">

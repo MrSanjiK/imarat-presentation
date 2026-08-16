@@ -35,7 +35,7 @@ export default function Contact() {
       <div className="flex-1 px-5 md:px-10 lg:pr-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <ChapterLabel index="09" className="mb-6">
+            <ChapterLabel index="12" className="mb-6">
               {dict.contact.label}
             </ChapterLabel>
             <h2 data-reveal className="font-display text-[clamp(2rem,5vw,4rem)] leading-tight">

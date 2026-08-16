@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import ChapterLabel from "@/components/ui/ChapterLabel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -146,9 +147,9 @@ export default function ProjectsInfo({ dict }: ProjectsInfoProps) {
     >
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent opacity-60">
+          <ChapterLabel index="06" className="mb-6 justify-center">
             {dict.projectsInfo.label}
-          </p>
+          </ChapterLabel>
           <h2 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl">
             {dict.projectsInfo.title}
           </h2>

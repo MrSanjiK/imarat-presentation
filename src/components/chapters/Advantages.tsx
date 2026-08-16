@@ -52,7 +52,7 @@ export default function Advantages() {
       <div className="px-5 md:px-10 lg:pr-24">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
           <div>
-            <ChapterLabel index="06" className="mb-6">
+            <ChapterLabel index="08" className="mb-6">
               {dict.advantages.label}
             </ChapterLabel>
             <h2 data-reveal className="font-display text-[clamp(2rem,5vw,4rem)] leading-tight">

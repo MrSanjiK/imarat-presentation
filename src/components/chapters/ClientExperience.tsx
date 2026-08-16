@@ -5,12 +5,14 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
 import { MEDIA, excursionPhotoSrc, excursionPhotoSrcSet, excursionVideoSources } from "@/lib/media";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import ChapterLabel from "@/components/ui/ChapterLabel";
 
 export default function ClientExperience() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const videoRef = useAutoplayVideo();
 
   useGSAP(
     () => {
@@ -43,7 +45,7 @@ export default function ClientExperience() {
     >
       <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
         <div>
-          <ChapterLabel index="09" className="mb-6">
+          <ChapterLabel index="11" className="mb-6">
             {dict.clientExperience.label}
           </ChapterLabel>
           <h2 data-reveal className="font-display text-[clamp(2rem,5vw,4rem)] leading-tight">
@@ -70,10 +72,10 @@ export default function ClientExperience() {
             if (!isVisible) return null;
 
             const zIndex = allMedia.length - Math.abs(offset);
-            const scale = isActive ? 1 : 1 - Math.abs(offset) * 0.05;
-            const translateY = Math.abs(offset) * (offset > 0 ? 20 : -20);
-            const opacity = isActive ? 1 : 0.4;
-            const rotateX = offset * 2;
+            const scale = isActive ? 1 : 1 - Math.abs(offset) * 0.15;
+            const translateY = Math.abs(offset) * (offset > 0 ? 30 : -30);
+            const opacity = isActive ? 1 : 0.65;
+            const rotateX = offset * 3;
 
             return (
               <div
@@ -89,11 +91,15 @@ export default function ClientExperience() {
                 <div className="overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-2xl">
                   {item.type === "video" ? (
                     <video
+                      ref={isActive ? videoRef : undefined}
                       src={excursionVideoSources(item.data.n).video}
                       poster={excursionVideoSources(item.data.n).poster}
+                      autoPlay
+                      muted
+                      loop
                       controls
                       playsInline
-                      preload="none"
+                      preload="metadata"
                       className="w-full object-cover"
                       style={{ aspectRatio: `${item.data.w} / ${item.data.h}` }}
                     />

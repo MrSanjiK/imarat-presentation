@@ -77,10 +77,10 @@ export default function FloorPlans() {
             if (!isVisible) return null;
 
             const zIndex = plans.length - Math.abs(offset);
-            const scale = isActive ? 1 : 1 - Math.abs(offset) * 0.05;
-            const translateY = Math.abs(offset) * (offset > 0 ? 20 : -20);
-            const opacity = isActive ? 1 : 0.4;
-            const rotateX = offset * 2;
+            const scale = isActive ? 1 : 1 - Math.abs(offset) * 0.15;
+            const translateY = Math.abs(offset) * (offset > 0 ? 30 : -30);
+            const opacity = isActive ? 1 : 0.65;
+            const rotateX = offset * 3;
 
             return (
               <div

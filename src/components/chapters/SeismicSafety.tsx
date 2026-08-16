@@ -55,7 +55,7 @@ export default function SeismicSafety() {
           </h2>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           {/* Video with floating badge */}
           <div data-reveal className="relative">
             <div className="group relative overflow-hidden rounded-[24px] border-2 border-line bg-surface shadow-2xl transition-all duration-700 hover:border-copper/50 hover:shadow-copper/10">

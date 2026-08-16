@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import { clipSources, projectClips } from "@/lib/media";
 import { projectOrder, projectsMeta } from "@/data/projects";
 import ChapterLabel from "@/components/ui/ChapterLabel";
@@ -70,11 +71,14 @@ export default function ConstructionClips() {
                 <div
                   key={`${slug}-${clip.n}`}
                   className="group relative shrink-0 snap-center overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-lg transition-all duration-500 hover:border-copper hover:shadow-2xl"
-                  style={{ width: "min(85vw, 480px)" }}
+                  style={{ width: "min(85vw, 400px)" }}
                 >
                   <video
                     src={src.video}
                     poster={src.poster}
+                    autoPlay
+                    muted
+                    loop
                     controls
                     playsInline
                     preload="metadata"

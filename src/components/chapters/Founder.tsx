@@ -20,21 +20,6 @@ export default function Founder() {
 
       if (!reduced) {
         gsap.fromTo(
-          q("[data-portrait]"),
-          { yPercent: -6, scale: 1.1 },
-          {
-            yPercent: 6,
-            scale: 1.1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: root.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          },
-        );
-        gsap.fromTo(
           q("[data-sign-line] path"),
           { strokeDashoffset: 320 },
           {
@@ -61,7 +46,7 @@ export default function Founder() {
       <div className="grid items-center gap-14 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:pr-24">
         {/* portrait */}
         <div data-reveal className="relative mx-auto w-full max-w-[440px] lg:mx-0">
-          <div className="relative aspect-[3/4] overflow-hidden">
+          <div className="relative aspect-[3/4.2] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               data-portrait
@@ -72,7 +57,7 @@ export default function Founder() {
               loading="lazy"
               decoding="async"
               draggable={false}
-              className="h-full w-full object-cover object-top grayscale-[0.35] transition-[filter] duration-700 will-change-transform hover:grayscale-0"
+              className="h-full w-full object-cover object-top grayscale-[0.35] transition-[filter] duration-700 hover:grayscale-0"
             />
             <div className="pointer-events-none absolute inset-0 border border-line-strong" />
           </div>
@@ -85,7 +70,7 @@ export default function Founder() {
 
         {/* copy */}
         <div>
-          <ChapterLabel index="07" className="mb-8">
+          <ChapterLabel index="09" className="mb-8">
             {dict.ceo.label}
           </ChapterLabel>
 

@@ -36,7 +36,7 @@ export default function Projects() {
       <div className="px-5 pt-28 md:px-10 md:pt-40 lg:pr-24">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-6 md:mb-10">
           <div>
-            <ChapterLabel index="04" className="mb-6">
+            <ChapterLabel index="05" className="mb-6">
               {dict.projectsChapter.label}
             </ChapterLabel>
             <h2 data-reveal className="font-display text-[clamp(2rem,5vw,4rem)] leading-tight">

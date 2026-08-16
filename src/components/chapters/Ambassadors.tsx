@@ -35,7 +35,7 @@ function PersonCircle({
             loading="lazy"
             decoding="async"
             draggable={false}
-            className="h-full w-full object-cover grayscale-[0.25] transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
+            className="h-full w-full object-cover grayscale-[0.25] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
           />
         </div>
         <svg
@@ -96,8 +96,8 @@ export default function Ambassadors() {
           .toArray<HTMLElement>(root.current.querySelectorAll("[data-float]"))
           .forEach((el, i) => {
             gsap.to(el, {
-              y: gsap.utils.random(8, 15) * (i % 2 === 0 ? 1 : -1),
-              duration: gsap.utils.random(3.2, 4.8),
+              y: gsap.utils.random(6, 10) * (i % 2 === 0 ? 1 : -1),
+              duration: 4,
               ease: "sine.inOut",
               yoyo: true,
               repeat: -1,
@@ -117,7 +117,7 @@ export default function Ambassadors() {
       className="relative overflow-hidden bg-bg py-28 text-ink transition-colors duration-500 md:py-40"
     >
       <div className="px-5 text-center md:px-10">
-        <ChapterLabel index="08" className="justify-center">
+        <ChapterLabel index="10" className="justify-center">
           {dict.ambassadors.label}
         </ChapterLabel>
         <h2 data-reveal className="mt-6 font-display text-[clamp(2rem,5vw,4rem)] leading-tight">
