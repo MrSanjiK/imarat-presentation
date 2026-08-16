@@ -58,8 +58,8 @@ export default function Projects() {
       <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
         {/* sticky preview — desktop only */}
         <div className="relative hidden lg:block">
-          <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden p-10 pl-10">
-            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[20px] bg-surface-2 shadow-2xl">
+          <div className="sticky top-20 flex min-h-[80vh] items-center justify-center p-10 pl-10">
+            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[24px] border-2 border-line bg-surface-2 shadow-2xl">
               {projectOrder.map((slug, i) => {
                 const cover = coverImage(slug);
                 if (!cover) return null;
@@ -77,19 +77,19 @@ export default function Projects() {
                     className="absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{
                       opacity: hovered === i ? 1 : 0,
-                      transform: hovered === i ? "scale(1)" : "scale(1.08)",
+                      transform: hovered === i ? "scale(1)" : "scale(1.05)",
                       zIndex: hovered === i ? 2 : 1,
                     }}
                   />
                 );
               })}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <span className="absolute bottom-6 left-6 z-10 font-mono text-[11px] tracking-[0.2em] uppercase text-white/90">
+              <div className="pointer-events-none absolute inset-0 rounded-[24px] bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-6 left-6 z-10 font-mono text-xs font-medium uppercase tracking-[0.2em] text-white/95 drop-shadow-lg">
                 {projectsMeta[projectOrder[hovered]].num} — {dict.projects[projectOrder[hovered]]?.name}
               </span>
             </div>
             <div className="pointer-events-none absolute right-14 bottom-14 -z-0 hidden xl:block">
-              <span className="text-outline font-display text-[9rem] leading-none opacity-60">
+              <span className="text-outline font-display text-[9rem] leading-none opacity-50">
                 {projectsMeta[projectOrder[hovered]].num}
               </span>
             </div>
@@ -114,7 +114,7 @@ export default function Projects() {
                     onMouseEnter={() => setHovered(i)}
                     onFocus={() => setHovered(i)}
                     aria-label={`${copy?.name} — ${dict.ui.openProject}`}
-                    className="group flex w-full items-center gap-3 py-5 text-left md:gap-7 md:py-7"
+                    className="group flex w-full items-center gap-3 py-6 text-left md:gap-7 md:py-8"
                   >
                     {/* mobile thumb */}
                     {cover && (
@@ -130,24 +130,24 @@ export default function Projects() {
                     )}
                     <span className="label-mono w-8 shrink-0 !text-copper">{meta.num}</span>
                     <span className="min-w-0 flex-1">
-                      {/* no truncate/overflow here — it clips serif descenders (g, j) */}
-                      <span className="block font-display text-[clamp(1.5rem,3.2vw,2.9rem)] leading-[1.15] transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-copper">
+                      {/* Improved readability */}
+                      <span className="block font-display text-[clamp(1.6rem,3.5vw,3rem)] font-medium leading-[1.2] transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-copper">
                         {copy?.name}
                       </span>
-                      <span className="mt-1 block truncate text-xs text-muted md:text-[13px]">
+                      <span className="mt-1.5 block truncate text-[13px] leading-relaxed text-muted md:text-sm">
                         {copy?.tagline}
                       </span>
                     </span>
                     {copy?.location && (
                       <span className="label-mono hidden shrink-0 md:block">{copy.location}</span>
                     )}
-                    <span className="grid size-10 shrink-0 place-items-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-copper group-hover:bg-copper-soft">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line bg-surface transition-all duration-500 group-hover:rotate-45 group-hover:border-copper group-hover:bg-copper-soft group-hover:shadow-lg">
                       <svg
                         viewBox="0 0 24 24"
                         className="size-4 -rotate-45 text-ink transition-colors group-hover:text-copper"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1.5"
+                        strokeWidth="2"
                       >
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
