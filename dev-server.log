@@ -1,0 +1,39 @@
+
+> imarat-presentation@1.0.0 dev
+> next dev
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of D:\Workspace\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * D:\Workspace\IMARAT DEVELOPMENT PRESENTATION SITE\imarat-presentation\package-lock.json
+
+ ⚠ Port 3000 is in use by process 13948, using available port 3002 instead.
+   ▲ Next.js 15.5.21
+   - Local:        http://localhost:3002
+   - Network:      http://192.168.1.110:3002
+
+ ✓ Starting...
+ ✓ Ready in 1996ms
+
+<--- Last few GCs --->
+
+[6708:00000183649AB000]       83 ms: Scavenge 8.2 (10.8) -> 7.0 (11.3) MB, pooled: 0 MB, 0.43 / 0.00 ms  (average mu = 1.000, current mu = 1.000) task; 
+[6708:00000183649AB000]     8175 ms: Mark-Compact (reduce) 8.4 (11.6) -> 6.8 (8.8) MB, pooled: 0 MB, 1.83 / 0.03 ms  (+ 0.0 ms in 0 steps since start of marking, biggest step 0.0 ms, walltime since start of marking 4 ms) (average mu = 1.000, current mu = 
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF6A0153587 
+ 2: 00007FF6A00B3A5B 
+ 3: 00007FF6A0CBCCD1 
+ 4: 00007FF6A0CA9786 
+ 5: 00007FF6A0B05ED0 
+ 6: 00007FF6A0ABDC7D 
+ 7: 00007FF6A0B0F0D3 
+ 8: 00007FF6A0AFEF9D 
+ 9: 00007FF6A0AFAB55 
+10: 00007FF6A0483F7D 

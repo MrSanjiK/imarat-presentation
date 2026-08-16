@@ -7,11 +7,13 @@ import { setupReveals } from "@/lib/reveal";
 import { MEDIA, excursionPhotoSrc, excursionPhotoSrcSet, excursionVideoSources } from "@/lib/media";
 import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import ChapterLabel from "@/components/ui/ChapterLabel";
+import MediaViewer from "@/components/ui/MediaViewer";
 
 export default function ClientExperience() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [viewerOpen, setViewerOpen] = useState(false);
   const videoRef = useAutoplayVideo();
 
   useGSAP(
@@ -88,7 +90,7 @@ export default function ClientExperience() {
                   pointerEvents: isActive ? "auto" : "none",
                 }}
               >
-                <div className="overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-2xl">
+                <div className="cursor-pointer overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-2xl transition-transform hover:scale-[1.02]" onClick={() => setViewerOpen(true)}>
                   {item.type === "video" ? (
                     <video
                       ref={isActive ? videoRef : undefined}
@@ -168,6 +170,29 @@ export default function ClientExperience() {
           {dict.clientExperience.hint}
         </p>
       </div>
+
+      {/* MediaViewer */}
+      {viewerOpen && (
+        <MediaViewer
+          items={allMedia.map((item) =>
+            item.type === "video"
+              ? {
+                  type: "video" as const,
+                  src: excursionVideoSources(item.data.n).video,
+                  poster: excursionVideoSources(item.data.n).poster,
+                  aspectRatio: `${item.data.w} / ${item.data.h}`,
+                }
+              : {
+                  type: "image" as const,
+                  src: excursionPhotoSrc(item.data.n, 1920),
+                  srcSet: excursionPhotoSrcSet(item.data.n),
+                  alt: dict.clientExperience.photoAlt,
+                }
+          )}
+          initialIndex={activeIndex}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </section>
   );
 }
