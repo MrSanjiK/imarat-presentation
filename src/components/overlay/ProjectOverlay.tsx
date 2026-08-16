@@ -12,6 +12,7 @@ import {
   projectImgSrc,
   projectImgSrcSet,
 } from "@/lib/media";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import CatalogViewer from "@/components/overlay/CatalogViewer";
 import Lightbox from "@/components/overlay/Lightbox";
 import Magnetic from "@/components/ui/Magnetic";
@@ -311,17 +312,20 @@ export default function ProjectOverlay({ slug }: { slug: string }) {
           <div id="ov-clips" data-ov className="mt-16 scroll-mt-24 md:mt-20">
             <p className="label-mono mb-5">{dict.overlay.constructionTab}</p>
             <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-3">
-              {clips.map((clip) => {
+              {clips.map((clip, idx) => {
                 const src = clipSources(slug, clip.n);
                 return (
                   <video
                     key={clip.n}
                     src={src.video}
                     poster={src.poster}
+                    autoPlay
+                    muted
+                    loop
                     controls
                     playsInline
-                    preload="none"
-                    className="w-full bg-black object-cover"
+                    preload="metadata"
+                    className="w-full rounded-[12px] bg-black object-cover"
                     style={{ aspectRatio: `${clip.w} / ${clip.h}`, maxHeight: "70vh" }}
                   />
                 );

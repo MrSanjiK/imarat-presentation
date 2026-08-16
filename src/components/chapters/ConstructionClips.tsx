@@ -1,10 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
-import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import { clipSources, projectClips } from "@/lib/media";
 import { projectOrder, projectsMeta } from "@/data/projects";
 import ChapterLabel from "@/components/ui/ChapterLabel";
@@ -13,6 +12,7 @@ export default function ConstructionClips() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useGSAP(
     () => {
@@ -20,6 +20,31 @@ export default function ConstructionClips() {
     },
     { scope: root },
   );
+
+  // Auto-play videos when they become visible
+  useEffect(() => {
+    const observers = videoRefs.current.map((video, index) => {
+      if (!video) return null;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {
+                // Autoplay blocked, will retry on user interaction
+              });
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(video);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
 
   // Collect all clips from all projects
   const allClips = projectOrder.flatMap((slug) => {
@@ -74,6 +99,9 @@ export default function ConstructionClips() {
                   style={{ width: "min(85vw, 400px)" }}
                 >
                   <video
+                    ref={(el) => {
+                      videoRefs.current[index] = el;
+                    }}
                     src={src.video}
                     poster={src.poster}
                     autoPlay
