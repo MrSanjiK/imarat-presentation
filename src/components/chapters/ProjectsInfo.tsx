@@ -160,7 +160,7 @@ export default function ProjectsInfo({ dict }: ProjectsInfoProps) {
 
         <div
           ref={tableRef}
-          className="overflow-x-auto rounded-2xl bg-bg border border-line"
+          className="overflow-x-auto rounded-[20px] bg-bg border border-line"
         >
           <table className="w-full min-w-[800px]">
             <thead>

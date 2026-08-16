@@ -95,7 +95,7 @@ export default function Manifesto() {
 
           {/* drone window */}
           <div data-reveal className="relative hidden max-w-[380px] justify-self-end lg:block">
-            <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px]">
               <video
                 ref={videoRef}
                 data-drone
