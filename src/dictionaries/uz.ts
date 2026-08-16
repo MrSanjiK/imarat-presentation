@@ -207,6 +207,20 @@ const uz: Dict = {
     photoAlt: "Mijozlar ekskursiyasi",
     hint: "19 video va 33 fotosuratdan iborat galereya",
   },
+  floorPlans: {
+    title: "Reja-chizmalar",
+    sub: "Turli xil maydonlarda 1, 2 va 3 xonali kvartiralar",
+    counterLabel: "Rejalar",
+    viewLabel: "Ko'rish",
+    hint: "Rejalarni ko'rish uchun bosing",
+  },
+  constructionClips: {
+    title: "Qurilish jarayoni",
+    sub: "Loyihalarimizning qurilish jarayonini videolar orqali kuzating",
+    counterLabel: "Videolar",
+    hint: "Qurilish videolarini tomosha qiling",
+    empty: "Videolar tez orada qo'shiladi",
+  },
   contact: {
     label: "Aloqa",
     title: "Suhbatni boshlaylik",

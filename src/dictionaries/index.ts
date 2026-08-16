@@ -133,6 +133,20 @@ export interface Dict {
     photoAlt: string;
     hint: string;
   };
+  floorPlans: {
+    title: string;
+    sub: string;
+    counterLabel: string;
+    viewLabel: string;
+    hint: string;
+  };
+  constructionClips: {
+    title: string;
+    sub: string;
+    counterLabel: string;
+    hint: string;
+    empty: string;
+  };
   contact: {
     label: string;
     title: string;

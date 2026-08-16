@@ -207,6 +207,20 @@ const zh: Dict = {
     photoAlt: "客户参观",
     hint: "19个视频和33张照片的画廊",
   },
+  floorPlans: {
+    title: "户型图",
+    sub: "不同面积的1居室、2居室和3居室公寓",
+    counterLabel: "户型",
+    viewLabel: "查看",
+    hint: "点击查看户型图",
+  },
+  constructionClips: {
+    title: "建设过程",
+    sub: "通过视频跟踪我们项目的建设过程",
+    counterLabel: "视频",
+    hint: "观看建设视频",
+    empty: "视频即将添加",
+  },
   contact: {
     label: "联系我们",
     title: "让我们开始对话",

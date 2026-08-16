@@ -10,6 +10,8 @@ import Advantages from "@/components/chapters/Advantages";
 import Founder from "@/components/chapters/Founder";
 import Ambassadors from "@/components/chapters/Ambassadors";
 import ClientExperience from "@/components/chapters/ClientExperience";
+import FloorPlans from "@/components/chapters/FloorPlans";
+import ConstructionClips from "@/components/chapters/ConstructionClips";
 import Contact from "@/components/chapters/Contact";
 
 export default function Home({ locale, dict }: { locale: Locale; dict: Dict }) {
@@ -26,6 +28,8 @@ export default function Home({ locale, dict }: { locale: Locale; dict: Dict }) {
         <Founder />
         <Ambassadors />
         <ClientExperience />
+        <FloorPlans />
+        <ConstructionClips />
         <Contact />
       </main>
     </PresentationShell>

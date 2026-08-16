@@ -207,6 +207,20 @@ const en: Dict = {
     photoAlt: "Client tour",
     hint: "Gallery of 19 videos and 33 photos",
   },
+  floorPlans: {
+    title: "Floor Plans",
+    sub: "1-, 2-, and 3-bedroom apartments of various sizes",
+    counterLabel: "Plans",
+    viewLabel: "View",
+    hint: "Click to view floor plans",
+  },
+  constructionClips: {
+    title: "Construction Process",
+    sub: "Follow the construction process of our projects through videos",
+    counterLabel: "Videos",
+    hint: "Watch construction videos",
+    empty: "Videos will be added soon",
+  },
   contact: {
     label: "Contact",
     title: "Let's talk",
