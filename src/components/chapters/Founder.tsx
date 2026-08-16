@@ -46,10 +46,9 @@ export default function Founder() {
       <div className="grid items-center gap-14 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:pr-24">
         {/* portrait */}
         <div data-reveal className="relative mx-auto w-full max-w-[440px] lg:mx-0">
-          <div className="relative aspect-[3/4.2] overflow-hidden">
+          <div className="relative aspect-[3/4.2] overflow-hidden rounded-[20px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              data-portrait
               src={ceoSrc("portrait-1", 1280)}
               srcSet={ceoSrcSet("portrait-1")}
               sizes="(min-width:1024px) 36vw, 90vw"
@@ -57,9 +56,10 @@ export default function Founder() {
               loading="lazy"
               decoding="async"
               draggable={false}
-              className="h-full w-full object-cover object-top grayscale-[0.35] transition-[filter] duration-700 hover:grayscale-0"
+              className="h-full w-full object-cover grayscale-[0.35] transition-[filter] duration-700 hover:grayscale-0"
+              style={{ objectPosition: "50% 15%" }}
             />
-            <div className="pointer-events-none absolute inset-0 border border-line-strong" />
+            <div className="pointer-events-none absolute inset-0 rounded-[20px] border border-line-strong" />
           </div>
           <div className="absolute -inset-3 -z-10 border border-copper/35" aria-hidden />
           <RotatingBadge

@@ -7,8 +7,9 @@ export default function SlideCounter() {
   const lastIndex = dict.chapters.length - 1;
   // Total main chapters (exclude intro and contact)
   const total = dict.chapters.length - 2;
-  // Display number: skip intro (0), so chapter 1 shows as "01"
-  const displayNumber = active === 0 ? 0 : active;
+  // Display number: manifesto (index 1) shows as "01", seismic (index 2) as "02", etc.
+  // So display = active (since intro is hidden and doesn't count)
+  const displayNumber = active;
 
   return (
     <div
