@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { VIDEOS } from "@/lib/media";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Process() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [mobile, setMobile] = useState<boolean | null>(null);
+  const videoRef = useAutoplayVideo();
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -85,6 +87,7 @@ export default function Process() {
         <div data-frame className="absolute inset-0 will-change-[clip-path]">
           {mobile !== null && (
             <video
+              ref={videoRef}
               key={src}
               className="h-full w-full object-cover"
               src={src}

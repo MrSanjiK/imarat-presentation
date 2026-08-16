@@ -7,10 +7,12 @@ import { setupReveals } from "@/lib/reveal";
 import { VIDEOS } from "@/lib/media";
 import ChapterLabel from "@/components/ui/ChapterLabel";
 import RotatingBadge from "@/components/ui/RotatingBadge";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Manifesto() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
+  const videoRef = useAutoplayVideo();
 
   useGSAP(
     () => {
@@ -95,6 +97,7 @@ export default function Manifesto() {
           <div data-reveal className="relative hidden max-w-[380px] justify-self-end lg:block">
             <div className="relative aspect-[4/5] w-full overflow-hidden">
               <video
+                ref={videoRef}
                 data-drone
                 className="h-full w-full object-cover will-change-transform"
                 src={VIDEOS.drone}

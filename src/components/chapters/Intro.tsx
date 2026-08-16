@@ -5,11 +5,13 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { VIDEOS } from "@/lib/media";
 import Marquee from "@/components/ui/Marquee";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Intro() {
   const { dict, ready } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [mobile, setMobile] = useState<boolean | null>(null);
+  const videoRef = useAutoplayVideo();
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -105,6 +107,7 @@ export default function Intro() {
       <div data-video className="absolute inset-0 will-change-transform">
         {mobile !== null && (
           <video
+            ref={videoRef}
             key={videoSrc}
             className="h-full w-full object-cover"
             src={videoSrc}

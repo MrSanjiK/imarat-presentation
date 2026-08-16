@@ -72,7 +72,7 @@ export default function Founder() {
               loading="lazy"
               decoding="async"
               draggable={false}
-              className="h-full w-full object-cover grayscale-[0.35] transition-[filter] duration-700 will-change-transform hover:grayscale-0"
+              className="h-full w-full object-cover object-top grayscale-[0.35] transition-[filter] duration-700 will-change-transform hover:grayscale-0"
             />
             <div className="pointer-events-none absolute inset-0 border border-line-strong" />
           </div>

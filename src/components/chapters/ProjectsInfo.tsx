@@ -141,6 +141,7 @@ export default function ProjectsInfo({ dict }: ProjectsInfoProps) {
     <section
       ref={sectionRef}
       id="projects-info"
+      data-chapter="projects-info"
       className="chapter relative min-h-screen bg-surface py-24 px-6"
     >
       <div className="mx-auto max-w-[1400px]">

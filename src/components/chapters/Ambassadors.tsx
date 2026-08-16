@@ -80,7 +80,7 @@ const POSITIONS: Record<string, { left: string; top: string; size: number }> = {
   shaxzoda: { left: "90%", top: "68%", size: 126 },
   abror: { left: "66%", top: "86%", size: 132 },
   kusherbayev: { left: "12%", top: "76%", size: 136 },
-  dilshodbek: { left: "48%", top: "8%", size: 140 },
+  dilshodbek: { left: "48%", top: "18%", size: 140 },
 };
 
 export default function Ambassadors() {
