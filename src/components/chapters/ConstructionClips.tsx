@@ -11,6 +11,7 @@ import ChapterLabel from "@/components/ui/ChapterLabel";
 export default function ConstructionClips() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -34,9 +35,9 @@ export default function ConstructionClips() {
       ref={root}
       id="construction-clips"
       data-chapter="construction-clips"
-      className="relative px-5 py-28 md:px-10 md:py-40"
+      className="relative py-28 md:py-40"
     >
-      <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
+      <div className="mb-14 flex flex-wrap items-end justify-between gap-6 px-5 md:mb-20 md:px-10">
         <div>
           <ChapterLabel index="11" className="mb-6">
             {dict.overlay.constructionTab}
@@ -56,41 +57,59 @@ export default function ConstructionClips() {
         </div>
       </div>
 
-      {/* Video grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {allClips.map(({ slug, projectName, clip }, index) => {
-          const src = clipSources(slug, clip.n);
-          return (
-            <div
-              key={`${slug}-${clip.n}`}
-              data-reveal
-              className="group relative overflow-hidden rounded-[16px] border border-line bg-surface-2 transition-all duration-500 hover:border-copper hover:shadow-2xl"
-            >
-              <video
-                src={src.video}
-                poster={src.poster}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full object-cover"
-                style={{ aspectRatio: `${clip.w} / ${clip.h}` }}
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <p className="label-mono text-white/90">{projectName}</p>
-                <p className="mt-0.5 text-xs text-white/70">{projectsMeta[slug].num}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      {/* Horizontal scrollable carousel */}
+      {allClips.length > 0 ? (
+        <div data-reveal className="relative">
+          <div
+            ref={scrollRef}
+            className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-4 md:px-10"
+          >
+            {allClips.map(({ slug, projectName, clip }, index) => {
+              const src = clipSources(slug, clip.n);
+              return (
+                <div
+                  key={`${slug}-${clip.n}`}
+                  className="group relative shrink-0 snap-center overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-lg transition-all duration-500 hover:border-copper hover:shadow-2xl"
+                  style={{ width: "min(85vw, 480px)" }}
+                >
+                  <video
+                    src={src.video}
+                    poster={src.poster}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full object-cover"
+                    style={{ aspectRatio: `${clip.w} / ${clip.h}` }}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5">
+                    <p className="font-display text-lg text-white md:text-xl">{projectName}</p>
+                    <p className="label-mono mt-1 text-white/70">{projectsMeta[slug].num}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-      {allClips.length === 0 && (
-        <p data-reveal className="label-mono text-center opacity-60">
+          {/* Scroll indicators */}
+          <div className="mt-6 flex justify-center gap-2 px-5 md:px-10">
+            {Array.from({ length: Math.min(allClips.length, 10) }).map((_, i) => (
+              <div
+                key={i}
+                className="h-1 w-8 rounded-full bg-line transition-colors duration-300"
+                style={{
+                  backgroundColor: i === 0 ? "var(--copper)" : undefined,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <p data-reveal className="label-mono px-5 text-center opacity-60 md:px-10">
           {dict.constructionClips?.empty || "Videolar tez orada qo'shiladi"}
         </p>
       )}
 
-      <p data-reveal className="label-mono mt-10 text-center opacity-60">
+      <p data-reveal className="label-mono mt-10 px-5 text-center opacity-60 md:px-10">
         {dict.constructionClips?.hint || "Qurilish videolarini tomosha qiling"}
       </p>
     </section>

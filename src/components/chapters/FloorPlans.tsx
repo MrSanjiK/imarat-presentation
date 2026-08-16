@@ -10,7 +10,8 @@ import ChapterLabel from "@/components/ui/ChapterLabel";
 export default function FloorPlans() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
-  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useGSAP(
     () => {
@@ -21,12 +22,29 @@ export default function FloorPlans() {
 
   const plans = MEDIA.floorPlans;
 
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + plans.length) % plans.length);
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % plans.length);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (lightboxOpen) {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "Escape") setLightboxOpen(false);
+    }
+  };
+
   return (
     <section
       ref={root}
       id="floor-plans"
       data-chapter="floor-plans"
       className="relative px-5 py-28 md:px-10 md:py-40"
+      onKeyDown={handleKeyDown}
     >
       <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
         <div>
@@ -48,47 +66,107 @@ export default function FloorPlans() {
         </div>
       </div>
 
-      {/* Grid layout */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {plans.map((plan, index) => (
+      {/* iOS-style stack */}
+      <div data-reveal className="relative mx-auto max-w-5xl">
+        <div className="relative" style={{ perspective: "2000px" }}>
+          {plans.map((plan, index) => {
+            const offset = index - activeIndex;
+            const isActive = index === activeIndex;
+            const isVisible = Math.abs(offset) <= 2;
+
+            if (!isVisible) return null;
+
+            const zIndex = plans.length - Math.abs(offset);
+            const scale = isActive ? 1 : 1 - Math.abs(offset) * 0.05;
+            const translateY = Math.abs(offset) * (offset > 0 ? 20 : -20);
+            const opacity = isActive ? 1 : 0.4;
+            const rotateX = offset * 2;
+
+            return (
+              <div
+                key={plan.n}
+                className="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{
+                  zIndex,
+                  transform: `scale(${scale}) translateY(${translateY}px) rotateX(${rotateX}deg)`,
+                  opacity,
+                  pointerEvents: isActive ? "auto" : "none",
+                }}
+              >
+                <div className="overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-2xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={floorPlanSrc(plan.n, 1280)}
+                    srcSet={floorPlanSrcSet(plan.n)}
+                    sizes="(min-width:1024px) 60vw, 90vw"
+                    alt={`${dict.overlay.floorPlansTab} ${plan.area} m²`}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    decoding="async"
+                    draggable={false}
+                    className="w-full cursor-pointer object-cover"
+                    style={{ aspectRatio: `${plan.w} / ${plan.h}` }}
+                    onClick={() => setLightboxOpen(true)}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+                    <p className="font-display text-3xl text-white">{plan.area} m²</p>
+                    <p className="label-mono mt-2 text-white/80">{dict.floorPlans?.viewLabel || "Ko'rish"}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Spacer */}
+          <div style={{ paddingTop: "75%" }} />
+        </div>
+
+        {/* Navigation controls */}
+        <div className="mt-8 flex items-center justify-center gap-6">
           <button
-            key={plan.n}
             type="button"
-            data-reveal
+            aria-label={dict.ui.prev}
             data-cursor="link"
-            onClick={() => setSelectedPlan(index)}
-            className="group relative overflow-hidden rounded-[16px] border border-line bg-surface-2 transition-all duration-500 hover:border-copper hover:shadow-2xl"
+            onClick={handlePrev}
+            className="grid size-14 place-items-center rounded-full border border-line bg-surface transition-all hover:border-copper hover:scale-110 active:scale-95"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={floorPlanSrc(plan.n, 640)}
-              srcSet={floorPlanSrcSet(plan.n)}
-              sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 90vw"
-              alt={`${dict.overlay.floorPlansTab} ${plan.area} m²`}
-              loading={index < 6 ? "eager" : "lazy"}
-              decoding="async"
-              draggable={false}
-              className="w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-              style={{ aspectRatio: `${plan.w} / ${plan.h}` }}
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
-              <p className="font-display text-2xl text-white">{plan.area} m²</p>
-              <p className="label-mono mt-1 text-white/80">{dict.floorPlans?.viewLabel || "Ko'rish"}</p>
-            </div>
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
-        ))}
+
+          <div className="flex items-baseline gap-2">
+            <span className="font-display text-3xl tabular-nums text-copper">
+              {String(activeIndex + 1).padStart(2, "0")}
+            </span>
+            <span className="label-mono opacity-60">
+              / {String(plans.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            aria-label={dict.ui.next}
+            data-cursor="link"
+            onClick={handleNext}
+            className="grid size-14 place-items-center rounded-full border border-line bg-surface transition-all hover:border-copper hover:scale-110 active:scale-95"
+          >
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Lightbox */}
-      {selectedPlan !== null && (
+      {lightboxOpen && (
         <div
           className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 p-4"
-          onClick={() => setSelectedPlan(null)}
+          onClick={() => setLightboxOpen(false)}
         >
           <button
             type="button"
             aria-label={dict.ui.close}
-            onClick={() => setSelectedPlan(null)}
+            onClick={() => setLightboxOpen(false)}
             className="absolute top-5 right-5 z-10 grid size-12 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur transition-all hover:rotate-90 hover:border-white/40"
           >
             <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -99,12 +177,12 @@ export default function FloorPlans() {
           <div className="relative max-h-[90vh] max-w-5xl" onClick={(e) => e.stopPropagation()}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={floorPlanSrc(plans[selectedPlan].n, 1920)}
-              alt={`${dict.overlay.floorPlansTab} ${plans[selectedPlan].area} m²`}
+              src={floorPlanSrc(plans[activeIndex].n, 1920)}
+              alt={`${dict.overlay.floorPlansTab} ${plans[activeIndex].area} m²`}
               className="h-auto w-full rounded-[20px] object-contain"
             />
             <div className="mt-4 text-center">
-              <p className="font-display text-3xl text-white">{plans[selectedPlan].area} m²</p>
+              <p className="font-display text-3xl text-white">{plans[activeIndex].area} m²</p>
             </div>
           </div>
 
@@ -115,7 +193,7 @@ export default function FloorPlans() {
               aria-label={dict.ui.prev}
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedPlan((prev) => (prev! - 1 + plans.length) % plans.length);
+                handlePrev();
               }}
               className="grid size-12 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur transition-all hover:border-white/40 hover:scale-110"
             >
@@ -125,7 +203,7 @@ export default function FloorPlans() {
             </button>
 
             <span className="font-mono text-sm text-white/80 tabular-nums">
-              {String(selectedPlan + 1).padStart(2, "0")} / {String(plans.length).padStart(2, "0")}
+              {String(activeIndex + 1).padStart(2, "0")} / {String(plans.length).padStart(2, "0")}
             </span>
 
             <button
@@ -133,7 +211,7 @@ export default function FloorPlans() {
               aria-label={dict.ui.next}
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedPlan((prev) => (prev! + 1) % plans.length);
+                handleNext();
               }}
               className="grid size-12 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur transition-all hover:border-white/40 hover:scale-110"
             >
