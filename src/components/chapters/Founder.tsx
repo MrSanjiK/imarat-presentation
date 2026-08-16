@@ -4,13 +4,15 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
-import { ceoSrc, ceoSrcSet } from "@/lib/media";
+import { ceoSrc, ceoSrcSet, RENDERS } from "@/lib/media";
 import ChapterLabel from "@/components/ui/ChapterLabel";
 import RotatingBadge from "@/components/ui/RotatingBadge";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Founder() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
+  const videoRef = useAutoplayVideo();
 
   useGSAP(
     () => {
@@ -59,16 +61,31 @@ export default function Founder() {
       ref={root}
       id="founder"
       data-chapter="founder"
-      className="relative overflow-hidden bg-surface py-28 text-ink transition-colors duration-500 md:py-40"
+      className="relative overflow-x-clip bg-surface py-28 text-ink transition-colors duration-500 md:py-40"
     >
-      <div className="mx-auto max-w-7xl px-5 md:px-10">
+      {/* render video backdrop */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover opacity-20"
+          src={RENDERS.ecoPark2}
+          poster={RENDERS.ecoPark2Poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface/95 via-surface/85 to-surface/95" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 md:px-10">
         <ChapterLabel index="09" className="mb-12 md:mb-16">
           {dict.ceo.label}
         </ChapterLabel>
 
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
-          {/* portrait */}
-          <figure data-reveal className="relative">
+          {/* portrait — pinned while the right column scrolls */}
+          <figure data-reveal className="relative lg:sticky lg:top-20 lg:self-start">
             <div
               className="relative w-full overflow-hidden rounded-[16px] bg-surface-2 shadow-2xl"
               style={{ aspectRatio: "1080 / 908" }}

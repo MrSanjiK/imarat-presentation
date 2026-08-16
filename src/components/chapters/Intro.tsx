@@ -5,12 +5,14 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { VIDEOS } from "@/lib/media";
 import Marquee from "@/components/ui/Marquee";
+import MediaViewer from "@/components/ui/MediaViewer";
 import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Intro() {
   const { dict, ready } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [mobile, setMobile] = useState<boolean | null>(null);
+  const [viewerOpen, setViewerOpen] = useState(false);
   const videoRef = useAutoplayVideo();
 
   useEffect(() => {
@@ -123,6 +125,19 @@ export default function Intro() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(13,12,10,0.55)_100%)]" />
       </div>
 
+      {/* watch with sound */}
+      <button
+        type="button"
+        aria-label={dict.ui.watchVideo}
+        data-cursor="link"
+        onClick={() => setViewerOpen(true)}
+        className="absolute top-24 right-4 z-20 grid size-11 place-items-center rounded-full border border-white/25 bg-black/60 text-white backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-copper hover:text-copper md:top-28 md:right-10"
+      >
+        <svg viewBox="0 0 24 24" className="size-4.5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
       {/* content */}
       <div
         data-content
@@ -203,6 +218,14 @@ export default function Intro() {
           ))}
         </Marquee>
       </div>
+
+      {viewerOpen && (
+        <MediaViewer
+          items={[{ type: "video", src: videoSrc, poster }]}
+          initialIndex={0}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </section>
   );
 }

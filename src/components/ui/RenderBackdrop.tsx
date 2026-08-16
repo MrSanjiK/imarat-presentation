@@ -62,7 +62,7 @@ export default function RenderBackdrop({
       {/* Video backdrop */}
       <div
         data-video
-        className="absolute inset-0 -z-10 will-change-[transform,opacity]"
+        className="pointer-events-none absolute inset-0 will-change-[transform,opacity]"
       >
         <video
           ref={videoRef}

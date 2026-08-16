@@ -573,7 +573,7 @@ async function main() {
     }
     const n = `video-${String(i + 1).padStart(2, "0")}`;
     const dest = path.join(OUT, "excursion", `${n}.mp4`);
-    const dims = await transcodeVideo(src, dest, { box: 1280, crf: 28 });
+    const dims = await transcodeVideo(src, dest, { box: 1280, crf: 28, keepAudio: true });
     if (dims.w > 0) {
       manifest.excursion.videos.push({ n, ...dims });
     }

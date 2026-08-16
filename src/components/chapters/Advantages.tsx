@@ -53,7 +53,7 @@ export default function Advantages() {
       className="invert-band relative bg-bg py-28 text-ink transition-colors duration-500 md:py-40"
     >
       {/* Render video backdrop */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <video
           ref={videoRef}
           className="h-full w-full object-cover opacity-25"
@@ -67,7 +67,7 @@ export default function Advantages() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-bg/90 via-bg/75 to-bg/90" />
       </div>
-      <div className="px-5 md:px-10 lg:pr-24">
+      <div className="relative px-5 md:px-10 lg:pr-24">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
           <div>
             <ChapterLabel index="08" className="mb-6">
@@ -123,7 +123,7 @@ export default function Advantages() {
       </div>
 
       {/* offers ticker */}
-      <div data-reveal className="mt-16 border-y border-line md:mt-20">
+      <div data-reveal className="relative mt-16 border-y border-line md:mt-20">
         <Marquee className="py-5">
           {dict.advantages.offers.map((o, i) => (
             <span key={i} className="flex items-center">

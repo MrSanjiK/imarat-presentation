@@ -4,12 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { VIDEOS } from "@/lib/media";
+import MediaViewer from "@/components/ui/MediaViewer";
 import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Process() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [mobile, setMobile] = useState<boolean | null>(null);
+  const [viewerOpen, setViewerOpen] = useState(false);
   const videoRef = useAutoplayVideo();
 
   useEffect(() => {
@@ -102,6 +104,19 @@ export default function Process() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0c0a]/60 via-transparent to-[#0d0c0a]/30" />
         </div>
 
+        {/* watch with sound */}
+        <button
+          type="button"
+          aria-label={dict.ui.watchVideo}
+          data-cursor="link"
+          onClick={() => setViewerOpen(true)}
+          className="absolute top-24 right-5 z-20 grid size-11 place-items-center rounded-full border border-white/25 bg-black/60 text-white backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-copper hover:text-copper md:top-28 md:right-10"
+        >
+          <svg viewBox="0 0 24 24" className="size-4.5" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+
         {/* text overlay */}
         <div className="relative z-10 flex h-full w-full flex-col justify-between px-5 pt-24 pb-10 text-[#f2ede6] md:px-10 md:pt-28 md:pb-14">
           <p className="label-mono video-text !text-[#f2ede6]/70">
@@ -159,6 +174,14 @@ export default function Process() {
           </div>
         </div>
       </div>
+
+      {viewerOpen && (
+        <MediaViewer
+          items={[{ type: "video", src, poster }]}
+          initialIndex={0}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </section>
   );
 }

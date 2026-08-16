@@ -7,6 +7,8 @@ import { setupReveals } from "@/lib/reveal";
 import ChapterLabel from "@/components/ui/ChapterLabel";
 import Marquee from "@/components/ui/Marquee";
 import Magnetic from "@/components/ui/Magnetic";
+import { RENDERS } from "@/lib/media";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 const ArrowUpRight = () => (
   <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -17,6 +19,7 @@ const ArrowUpRight = () => (
 export default function Contact() {
   const { dict, goTo } = usePresentation();
   const root = useRef<HTMLElement>(null);
+  const videoRef = useAutoplayVideo();
 
   useGSAP(
     () => {
@@ -32,7 +35,22 @@ export default function Contact() {
       data-chapter="contact"
       className="relative flex min-h-svh flex-col bg-bg pt-28 text-ink transition-colors duration-500 md:pt-40"
     >
-      <div className="flex-1 px-5 md:px-10 lg:pr-24">
+      {/* render video backdrop */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover opacity-25"
+          src={RENDERS.ecoPark3}
+          poster={RENDERS.ecoPark3Poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/90 via-bg/80 to-bg/95" />
+      </div>
+      <div className="relative flex-1 px-5 md:px-10 lg:pr-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <ChapterLabel index="12" className="mb-6">
@@ -129,7 +147,7 @@ export default function Contact() {
       </div>
 
       {/* footer */}
-      <footer className="mt-20 md:mt-28">
+      <footer className="relative mt-20 md:mt-28">
         <div className="border-t border-line">
           <Marquee slow className="py-4 md:py-6">
             {[0, 1].map((i) => (

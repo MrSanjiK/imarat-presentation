@@ -1,18 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { gsap, SplitText, useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
 import { VIDEOS } from "@/lib/media";
 import ChapterLabel from "@/components/ui/ChapterLabel";
 import RotatingBadge from "@/components/ui/RotatingBadge";
+import MediaViewer from "@/components/ui/MediaViewer";
 import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 
 export default function Manifesto() {
   const { dict } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const videoRef = useAutoplayVideo();
+  const [viewerOpen, setViewerOpen] = useState(false);
 
   useGSAP(
     () => {
@@ -108,7 +110,18 @@ export default function Manifesto() {
                 playsInline
                 preload="metadata"
               />
-              <div className="absolute inset-0 border border-line-strong" />
+              <div className="pointer-events-none absolute inset-0 border border-line-strong" />
+              <button
+                type="button"
+                aria-label={dict.ui.watchVideo}
+                data-cursor="link"
+                onClick={() => setViewerOpen(true)}
+                className="absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full border border-white/25 bg-black/60 text-white backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-copper hover:text-copper"
+              >
+                <svg viewBox="0 0 24 24" className="size-4.5" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
             </div>
             <div className="absolute -inset-3 -z-10 border border-copper/35" />
 
@@ -119,6 +132,14 @@ export default function Manifesto() {
           </div>
         </div>
       </div>
+
+      {viewerOpen && (
+        <MediaViewer
+          items={[{ type: "video", src: VIDEOS.drone, poster: VIDEOS.dronePoster }]}
+          initialIndex={0}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </section>
   );
 }
