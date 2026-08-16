@@ -24,3 +24,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# agent tooling
+.agents/
+.claude/
+.impeccable/
