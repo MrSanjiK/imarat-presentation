@@ -24,6 +24,8 @@ const zh: Dict = {
     watchVideo: "观看视频",
     page: "页",
     keyboardHint: "键盘：↑ ↓ 章节 · Esc 关闭",
+    viewerKeysHint: "ESC 关闭 · ← → 切换",
+    viewerSoundHint: "点击视频开启声音",
   },
   chapters: [
     { id: "intro", title: "简介" },
@@ -207,6 +209,7 @@ const zh: Dict = {
     handwritten: "等待您",
     photoAlt: "客户参观",
     hint: "19个视频和33张照片的画廊",
+    counterLabel: "媒体",
   },
   floorPlans: {
     title: "户型图",

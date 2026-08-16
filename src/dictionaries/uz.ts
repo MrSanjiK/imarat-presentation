@@ -24,6 +24,8 @@ const uz: Dict = {
     watchVideo: "Videoni ko'rish",
     page: "sahifa",
     keyboardHint: "Klaviatura: ↑ ↓ boblar · Esc yopish",
+    viewerKeysHint: "ESC yopish · ← → navigatsiya",
+    viewerSoundHint: "Ovoz yoqish uchun video ustiga bosing",
   },
   chapters: [
     { id: "intro", title: "Kirish" },
@@ -207,6 +209,7 @@ const uz: Dict = {
     handwritten: "Sizni kutamiz",
     photoAlt: "Mijozlar ekskursiyasi",
     hint: "19 video va 33 fotosuratdan iborat galereya",
+    counterLabel: "Media",
   },
   floorPlans: {
     title: "Reja-chizmalar",

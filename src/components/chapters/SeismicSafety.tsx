@@ -59,28 +59,27 @@ export default function SeismicSafety() {
           </p>
         </div>
 
-        {/* Main Content - Two equal cards */}
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+        {/* Main Content — vertical test footage shown uncropped */}
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-10">
           {/* Video Card */}
-          <div data-reveal className="relative">
-            <div className="group relative h-full overflow-hidden rounded-[16px] bg-surface shadow-2xl">
-              <div className="aspect-video w-full">
-                <video
-                  ref={videoRef}
-                  className="h-full w-full object-cover"
-                  src={VIDEOS.seismicTest}
-                  poster={VIDEOS.seismicTestPoster}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-              </div>
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          <div data-reveal className="relative mx-auto w-full max-w-[420px] lg:mx-0">
+            <div className="relative overflow-hidden rounded-[16px] bg-black shadow-2xl">
+              <video
+                ref={videoRef}
+                className="w-full"
+                style={{ aspectRatio: "608 / 1080" }}
+                src={VIDEOS.seismicTest}
+                poster={VIDEOS.seismicTestPoster}
+                autoPlay
+                muted
+                loop
+                controls
+                playsInline
+                preload="metadata"
+              />
 
               {/* Floating certification badge */}
-              <div className="absolute top-6 right-6 flex items-center gap-2.5 rounded-full border border-copper/60 bg-black/70 px-5 py-3 backdrop-blur-xl">
+              <div className="pointer-events-none absolute top-5 right-5 flex items-center gap-2.5 rounded-full border border-copper/60 bg-black/70 px-4 py-2.5 backdrop-blur-xl">
                 <svg viewBox="0 0 24 24" className="size-5 text-copper" fill="currentColor">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>

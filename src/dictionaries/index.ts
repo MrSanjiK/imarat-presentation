@@ -31,6 +31,8 @@ export interface Dict {
     watchVideo: string;
     page: string;
     keyboardHint: string;
+    viewerKeysHint: string;
+    viewerSoundHint: string;
   };
   chapters: { id: string; title: string }[];
   hero: {
@@ -132,6 +134,7 @@ export interface Dict {
     handwritten: string;
     photoAlt: string;
     hint: string;
+    counterLabel: string;
   };
   floorPlans: {
     title: string;

@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
 
+/**
+ * Ambient background videos only load and play while on screen. Playing all of
+ * them at once exhausts the decoder and crashes the tab with ERR_BLOB_OUT_OF_MEMORY.
+ */
 export function useAutoplayVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -7,29 +11,22 @@ export function useAutoplayVideo() {
     const video = videoRef.current;
     if (!video) return;
 
-    const attemptPlay = async () => {
-      try {
-        await video.play();
-      } catch (err) {
-        console.warn("Video autoplay blocked, will retry on visibility change:", err);
-      }
-    };
+    video.preload = "none";
 
-    // Immediate play attempt
-    attemptPlay();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.preload = "auto";
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: "200px 0px", threshold: 0.01 },
+    );
 
-    // Retry on visibility change (user switches back to tab)
-    const handleVisibilityChange = () => {
-      if (!document.hidden && video.paused) {
-        attemptPlay();
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   return videoRef;

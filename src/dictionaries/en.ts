@@ -24,6 +24,8 @@ const en: Dict = {
     watchVideo: "Watch video",
     page: "page",
     keyboardHint: "Keyboard: ↑ ↓ chapters · Esc to close",
+    viewerKeysHint: "ESC to close · ← → to navigate",
+    viewerSoundHint: "Click the video to enable sound",
   },
   chapters: [
     { id: "intro", title: "Intro" },
@@ -207,6 +209,7 @@ const en: Dict = {
     handwritten: "Waiting for you",
     photoAlt: "Client tour",
     hint: "Gallery of 19 videos and 33 photos",
+    counterLabel: "Media",
   },
   floorPlans: {
     title: "Floor Plans",

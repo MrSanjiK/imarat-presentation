@@ -24,6 +24,8 @@ const ru: Dict = {
     watchVideo: "Смотреть видео",
     page: "страница",
     keyboardHint: "Клавиатура: ↑ ↓ главы · Esc закрыть",
+    viewerKeysHint: "ESC закрыть · ← → навигация",
+    viewerSoundHint: "Нажмите на видео, чтобы включить звук",
   },
   chapters: [
     { id: "intro", title: "Интро" },
@@ -207,6 +209,7 @@ const ru: Dict = {
     handwritten: "Ждём вас",
     photoAlt: "Экскурсия клиентов",
     hint: "Галерея из 19 видео и 33 фотографий",
+    counterLabel: "Медиа",
   },
   floorPlans: {
     title: "Планировки",

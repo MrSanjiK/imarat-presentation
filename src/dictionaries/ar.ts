@@ -24,6 +24,8 @@ const ar: Dict = {
     watchVideo: "مشاهدة الفيديو",
     page: "صفحة",
     keyboardHint: "لوحة المفاتيح: ↑ ↓ الفصول · Esc للإغلاق",
+    viewerKeysHint: "ESC للإغلاق · ← → للتنقل",
+    viewerSoundHint: "انقر على الفيديو لتشغيل الصوت",
   },
   chapters: [
     { id: "intro", title: "المقدمة" },
@@ -207,6 +209,7 @@ const ar: Dict = {
     handwritten: "في انتظارك",
     photoAlt: "جولة العملاء",
     hint: "معرض من 19 فيديو و 33 صورة",
+    counterLabel: "وسائط",
   },
   floorPlans: {
     title: "مخططات الطوابق",

@@ -160,8 +160,8 @@ export default function MediaViewer({
 
       {/* Instructions */}
       <div className="px-5 pb-5 text-center font-mono text-[10px] tracking-wider text-[#f2ede6]/40 md:px-8">
-        <span className="hidden md:inline">ESC yopish · ← → navigatsiya · </span>
-        {currentItem.type === "video" && <span>Ovoz yoqish uchun video ustiga bosing</span>}
+        <span className="hidden md:inline">{dict.ui.viewerKeysHint}{currentItem.type === "video" && " · "}</span>
+        {currentItem.type === "video" && <span>{dict.ui.viewerSoundHint}</span>}
       </div>
     </div>,
     document.body,
