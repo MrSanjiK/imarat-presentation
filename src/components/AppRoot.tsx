@@ -1,18 +1,20 @@
 import "@/app/globals.css";
-import { Playfair_Display, Manrope, Caveat, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, DM_Sans, Caveat, Space_Mono } from "next/font/google";
 import Providers from "@/components/Providers";
 import type { Locale } from "@/dictionaries";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "cyrillic"],
   style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
   variable: "--font-playfair",
   display: "swap",
 });
 
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-manrope",
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -22,10 +24,10 @@ const caveat = Caveat({
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500"],
-  variable: "--font-plex",
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
   display: "swap",
 });
 
@@ -43,7 +45,7 @@ export default function AppRoot({
       lang={lang}
       dir={dir || "ltr"}
       suppressHydrationWarning
-      className={`${playfair.variable} ${manrope.variable} ${caveat.variable} ${plexMono.variable}`}
+      className={`${playfair.variable} ${dmSans.variable} ${caveat.variable} ${spaceMono.variable}`}
     >
       <body className="grain antialiased">
         <Providers>{children}</Providers>
