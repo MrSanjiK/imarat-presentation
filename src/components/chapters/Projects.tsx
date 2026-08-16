@@ -55,11 +55,11 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[0.95fr_1.05fr] lg:min-h-screen">
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
         {/* sticky preview — desktop only */}
         <div className="relative hidden lg:block">
-          <div className="sticky top-0 flex h-screen items-center justify-center p-10 pl-10">
-            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden bg-surface-2">
+          <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden p-10 pl-10">
+            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[20px] bg-surface-2 shadow-2xl">
               {projectOrder.map((slug, i) => {
                 const cover = coverImage(slug);
                 if (!cover) return null;
@@ -74,18 +74,17 @@ export default function Projects() {
                     loading={i === 0 ? "eager" : "lazy"}
                     decoding="async"
                     draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover transition-[opacity,transform,clip-path] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{
                       opacity: hovered === i ? 1 : 0,
-                      transform: hovered === i ? "scale(1)" : "scale(1.06)",
-                      clipPath: hovered === i ? "inset(0 0 0% 0)" : "inset(0 0 100% 0)",
+                      transform: hovered === i ? "scale(1)" : "scale(1.08)",
                       zIndex: hovered === i ? 2 : 1,
                     }}
                   />
                 );
               })}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-              <span className="absolute bottom-5 left-6 z-10 font-mono text-[11px] tracking-[0.2em] text-white/85 uppercase">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <span className="absolute bottom-6 left-6 z-10 font-mono text-[11px] tracking-[0.2em] uppercase text-white/90">
                 {projectsMeta[projectOrder[hovered]].num} — {dict.projects[projectOrder[hovered]]?.name}
               </span>
             </div>

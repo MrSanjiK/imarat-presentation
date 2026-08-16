@@ -7,81 +7,48 @@ import { setupReveals } from "@/lib/reveal";
 import { personSrc, personSrcSet } from "@/lib/media";
 import ChapterLabel from "@/components/ui/ChapterLabel";
 
-function PersonCircle({
+function PersonCard({
   id,
   name,
   role,
-  size,
   badge,
-  captionWidth = 190,
 }: {
   id: string;
   name: string;
   role: string;
-  size: number;
   badge?: string;
-  captionWidth?: number;
 }) {
   return (
     <figure className="group relative flex flex-col items-center text-center" data-cursor="link">
-      <div className="relative shrink-0" style={{ width: size, height: size }}>
-        <div className="absolute inset-0 overflow-hidden rounded-full bg-surface-2">
+      <div className="relative mb-5 size-36 shrink-0 md:size-44">
+        <div className="absolute inset-0 overflow-hidden rounded-full bg-surface-2 ring-1 ring-line transition-all duration-700 group-hover:ring-2 group-hover:ring-copper">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={personSrc(id, 640)}
             srcSet={personSrcSet(id)}
-            sizes={`${size}px`}
+            sizes="176px"
             alt={name}
             loading="lazy"
             decoding="async"
             draggable={false}
-            className="h-full w-full object-cover grayscale-[0.25] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+            className="h-full w-full object-cover grayscale-[0.3] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
           />
         </div>
-        <svg
-          className="absolute -inset-2 -rotate-90"
-          style={{ width: size + 16, height: size + 16 }}
-          viewBox="0 0 100 100"
-          aria-hidden
-        >
-          <circle cx="50" cy="50" r="48.5" fill="none" stroke="var(--line)" strokeWidth="0.8" />
-          <circle
-            cx="50"
-            cy="50"
-            r="48.5"
-            fill="none"
-            stroke="var(--copper)"
-            strokeWidth="1.4"
-            pathLength="100"
-            strokeDasharray="100"
-            strokeDashoffset="100"
-            strokeLinecap="round"
-            className="transition-[stroke-dashoffset] duration-700 ease-out group-hover:[stroke-dashoffset:0]"
-          />
-        </svg>
         {badge && (
-          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-copper px-3 py-1 font-mono text-[9px] tracking-[0.14em] whitespace-nowrap text-[#141210] uppercase">
+          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-copper px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-[#141210] shadow-lg">
             {badge}
           </span>
         )}
       </div>
-      <figcaption className="mt-5" style={{ maxWidth: captionWidth }}>
-        <p className="font-display text-base leading-tight md:text-lg">{name}</p>
-        <p className="label-mono mt-1.5 leading-relaxed">{role}</p>
+      <figcaption className="max-w-[180px]">
+        <p className="font-display text-base leading-tight transition-colors duration-500 group-hover:text-copper md:text-lg">
+          {name}
+        </p>
+        <p className="label-mono mt-2 leading-relaxed">{role}</p>
       </figcaption>
     </figure>
   );
 }
-
-/* pentagon-ish constellation coordinates (percent of container) */
-const POSITIONS: Record<string, { left: string; top: string; size: number }> = {
-  husanov: { left: "13%", top: "16%", size: 150 },
-  shomurodov: { left: "84%", top: "13%", size: 144 },
-  shaxzoda: { left: "90%", top: "68%", size: 126 },
-  abror: { left: "66%", top: "86%", size: 132 },
-  kusherbayev: { left: "12%", top: "76%", size: 136 },
-  dilshodbek: { left: "48%", top: "18%", size: 140 },
-};
 
 export default function Ambassadors() {
   const { dict } = usePresentation();
@@ -89,25 +56,12 @@ export default function Ambassadors() {
 
   useGSAP(
     () => {
-      if (!root.current) return;
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!reduced) {
-        gsap.utils
-          .toArray<HTMLElement>(root.current.querySelectorAll("[data-float]"))
-          .forEach((el, i) => {
-            gsap.to(el, {
-              y: gsap.utils.random(6, 10) * (i % 2 === 0 ? 1 : -1),
-              duration: 4,
-              ease: "sine.inOut",
-              yoyo: true,
-              repeat: -1,
-            });
-          });
-      }
       setupReveals(root.current);
     },
     { scope: root },
   );
+
+  const people = dict.ambassadors.people || [];
 
   return (
     <section
@@ -128,68 +82,28 @@ export default function Ambassadors() {
         </p>
       </div>
 
-      {/* desktop constellation */}
-      <div data-reveal className="relative mx-auto mt-10 hidden h-[680px] w-full max-w-5xl lg:block">
-        {/* orbit rings */}
-        <div
-          className="absolute top-1/2 left-1/2 size-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-line"
-          style={{ animation: "spin 80s linear infinite" }}
-          aria-hidden
-        />
-        <div
-          className="absolute top-1/2 left-1/2 size-[660px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-line opacity-70"
-          style={{ animation: "spin 120s linear infinite reverse" }}
-          aria-hidden
-        />
-
-        {/* center — founder */}
-        <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-          <PersonCircle
-            id="founder"
-            name={dict.ceo.name}
-            role={dict.ceo.role}
-            size={186}
-            badge={dict.ambassadors.founderBadge}
-            captionWidth={230}
-          />
-        </div>
-
-        {dict.ambassadors.people.map((p) => {
-          const pos = POSITIONS[p.id];
-          if (!pos) return null;
-          return (
-            <div
-              key={p.id}
-              data-float
-              className="absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: pos.left, top: pos.top }}
-            >
-              <PersonCircle id={p.id} name={p.name} role={p.role} size={pos.size} />
-            </div>
-          );
-        })}
-      </div>
-
-      {/* mobile / tablet — snap row */}
+      {/* Grid layout - clean and professional */}
       <div
         data-reveal
-        className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-10 overflow-x-auto px-8 pb-4 lg:hidden"
+        className="mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-5 md:grid-cols-3 md:gap-x-10 md:gap-y-16 md:px-10 lg:grid-cols-6"
       >
-        <div className="shrink-0 snap-center">
-          <PersonCircle
-            id="founder"
-            name={dict.ceo.name}
-            role={dict.ceo.role}
-            size={150}
-            badge={dict.ambassadors.founderBadge}
-            captionWidth={200}
+        {people.map((person) => (
+          <PersonCard
+            key={person.id}
+            id={person.id}
+            name={person.name}
+            role={person.role}
+            badge={person.id === "dilshodbek" ? dict.ambassadors.founderBadge : undefined}
           />
-        </div>
-        {dict.ambassadors.people.map((p) => (
-          <div key={p.id} className="shrink-0 snap-center">
-            <PersonCircle id={p.id} name={p.name} role={p.role} size={150} />
-          </div>
         ))}
+      </div>
+
+      {/* Trust indicator */}
+      <div data-reveal className="mx-auto mt-16 flex max-w-md items-center justify-center gap-3 rounded-full border border-line bg-surface px-6 py-4 md:mt-20">
+        <svg viewBox="0 0 24 24" className="size-6 text-copper" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+        <span className="label-mono text-ink-soft">Ishonchli jamoa</span>
       </div>
     </section>
   );
