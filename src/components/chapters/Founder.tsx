@@ -19,14 +19,32 @@ export default function Founder() {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (!reduced) {
+        /* signature flourish draws itself when the quote enters */
         gsap.fromTo(
-          q("[data-sign-line] path"),
-          { strokeDashoffset: 320 },
+          q("[data-sign-line]"),
+          { strokeDashoffset: 420 },
           {
             strokeDashoffset: 0,
-            duration: 1.2,
+            duration: 1.4,
             ease: "power2.inOut",
-            scrollTrigger: { trigger: q("[data-sign-line]")[0], start: "top 85%", once: true },
+            scrollTrigger: { trigger: q("[data-sign]")[0], start: "top 85%" },
+          },
+        );
+
+        /* portrait parallax inside its frame */
+        gsap.fromTo(
+          q("[data-portrait]"),
+          { yPercent: -6, scale: 1.08 },
+          {
+            yPercent: 6,
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: {
+              trigger: root.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
           },
         );
       }
@@ -41,102 +59,120 @@ export default function Founder() {
       ref={root}
       id="founder"
       data-chapter="founder"
-      className="relative overflow-hidden bg-bg py-28 text-ink transition-colors duration-500 md:py-40"
+      className="relative overflow-hidden bg-surface py-28 text-ink transition-colors duration-500 md:py-40"
     >
-      <div className="grid items-center gap-14 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:pr-24">
-        {/* portrait */}
-        <div data-reveal className="relative mx-auto w-full max-w-[440px] lg:mx-0">
-          <div className="relative aspect-[3/4.2] overflow-hidden rounded-[20px]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={ceoSrc("portrait-1", 1280)}
-              srcSet={ceoSrcSet("portrait-1")}
-              sizes="(min-width:1024px) 36vw, 90vw"
-              alt={dict.ceo.name}
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-              className="h-full w-full object-cover grayscale-[0.35] transition-[filter] duration-700 hover:grayscale-0"
-              style={{ objectPosition: "50% 15%" }}
-            />
-            <div className="pointer-events-none absolute inset-0 rounded-[20px] border border-line-strong" />
-          </div>
-          <div className="absolute -inset-3 -z-10 border border-copper/35" aria-hidden />
-          <RotatingBadge
-            text="IMARAT DEVELOPMENT • EST 2021 • "
-            className="absolute -right-3 -bottom-6 size-20 text-copper md:-right-10 md:-bottom-10 md:size-28"
-          />
-        </div>
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <ChapterLabel index="09" className="mb-12 md:mb-16">
+          {dict.ceo.label}
+        </ChapterLabel>
 
-        {/* copy */}
-        <div>
-          <ChapterLabel index="09" className="mb-8">
-            {dict.ceo.label}
-          </ChapterLabel>
-
-          <h2 data-reveal className="font-display text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.08]">
-            {dict.ceo.name}
-          </h2>
-          <p data-reveal className="label-mono mt-3 !text-copper">
-            {dict.ceo.role}
-          </p>
-
-          <blockquote data-reveal className="relative mt-10 max-w-2xl">
-            <span
-              className="absolute -top-8 -left-2 font-display text-7xl text-copper/50 select-none"
-              aria-hidden
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+          {/* portrait */}
+          <figure data-reveal className="relative">
+            <div
+              className="relative w-full overflow-hidden rounded-[16px] bg-surface-2 shadow-2xl"
+              style={{ aspectRatio: "1080 / 908" }}
             >
-              “
-            </span>
-            <p className="font-display text-lg leading-relaxed italic md:text-2xl">
-              {dict.ceo.quote}
-            </p>
-            <footer className="mt-6">
-              <div className="relative inline-block">
-                <span className="font-hand text-3xl text-copper md:text-4xl">{dict.ceo.sign}</span>
-                <svg
-                  data-sign-line
-                  className="absolute -bottom-2 left-0 w-full text-copper/60"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                >
-                  <path
-                    d="M2 8 C80 2, 190 11, 298 4"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeDasharray="320"
-                    strokeDashoffset="320"
-                  />
-                </svg>
-              </div>
-              <p className="font-hand mt-4 rotate-[-2deg] text-xl text-ink-soft md:text-2xl">
-                „{dict.ceo.creed}“
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-portrait
+                src={ceoSrc("founder", 1280)}
+                srcSet={ceoSrcSet("founder")}
+                sizes="(min-width:1024px) 45vw, 92vw"
+                alt={dict.ceo.name}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className="h-full w-full object-cover will-change-transform"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+              <figcaption className="absolute bottom-5 left-6 z-10">
+                <p className="video-text font-display text-xl text-white md:text-2xl">
+                  {dict.ceo.name}
+                </p>
+                <p className="video-text mt-1 font-mono text-[10px] tracking-[0.22em] text-white/75 uppercase">
+                  {dict.ceo.role}
+                </p>
+              </figcaption>
+            </div>
+            <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[20px] border border-copper/35" />
+            <RotatingBadge
+              text={`${dict.ceo.creed} • IMARAT DEVELOPMENT • `}
+              className="absolute -top-12 -right-10 hidden size-28 text-copper md:block"
+            />
+          </figure>
+
+          {/* voice */}
+          <div className="min-w-0">
+            <blockquote data-reveal className="relative">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -top-10 -left-3 font-display text-[7rem] leading-none text-copper/20 select-none md:-top-14 md:text-[9.5rem]"
+              >
+                “
+              </span>
+              <p className="relative font-display text-[clamp(1.5rem,3.2vw,2.6rem)] leading-[1.3]">
+                {dict.ceo.quote}
               </p>
-            </footer>
-          </blockquote>
+            </blockquote>
 
-          <div data-reveal className="mt-10 flex gap-8 border-t border-line pt-7 md:mt-12 md:gap-12 md:pt-8">
-            {dict.ceo.facts.map((f) => (
-              <div key={f.label}>
-                <p className="font-display text-4xl text-copper md:text-5xl">{f.value}</p>
-                <p className="label-mono mt-2 max-w-[160px]">{f.label}</p>
-              </div>
-            ))}
-          </div>
+            {/* signature */}
+            <div data-sign data-reveal className="relative mt-8 inline-block">
+              <span className="font-hand text-4xl text-copper md:text-5xl">{dict.ceo.sign}</span>
+              <svg
+                aria-hidden
+                className="absolute -bottom-4 left-0 w-full text-copper/60"
+                viewBox="0 0 400 18"
+                fill="none"
+              >
+                <path
+                  data-sign-line
+                  d="M6 12 C90 4, 180 16, 260 8 S 380 10, 394 6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeDasharray="420"
+                  strokeDashoffset="420"
+                />
+              </svg>
+            </div>
 
-          <ul data-reveal className="mt-9 space-y-2.5">
-            {dict.ceo.titles.map((t) => (
-              <li key={t} className="flex items-baseline gap-3 text-sm text-ink-soft md:text-[15px]">
-                <span className="font-display text-copper italic">/</span>
-                {t}
-              </li>
-            ))}
-          </ul>
+            {/* facts */}
+            <div data-reveal className="mt-12 grid grid-cols-2 gap-8 border-t border-line pt-8">
+              {dict.ceo.facts.map((f) => (
+                <div key={f.label}>
+                  <p className="font-display text-5xl text-copper md:text-6xl">{f.value}</p>
+                  <p className="mt-2 text-[13px] leading-relaxed text-ink-soft md:text-sm">
+                    {f.label}
+                  </p>
+                </div>
+              ))}
+            </div>
 
-          <div data-reveal className="mt-9">
-            <p className="label-mono mb-2">{dict.ceo.brandsLabel}</p>
-            <p className="font-mono text-xs leading-relaxed text-muted">{dict.ceo.brands}</p>
+            {/* titles */}
+            <ul data-reveal className="mt-10 border-t border-line">
+              {dict.ceo.titles.map((t) => (
+                <li
+                  key={t}
+                  className="flex items-baseline gap-4 border-b border-line py-3.5 text-sm text-ink-soft md:text-[15px]"
+                >
+                  <span aria-hidden className="size-1.5 shrink-0 translate-y-[-2px] rounded-full bg-copper" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            {/* brands */}
+            <div data-reveal className="mt-10">
+              <p className="label-mono">{dict.ceo.brandsLabel}</p>
+              <p className="mt-3 font-mono text-[12px] leading-loose tracking-[0.06em] text-ink-soft">
+                {dict.ceo.brands}
+              </p>
+            </div>
+
+            <p data-reveal className="mt-10 font-hand -rotate-2 text-2xl text-copper md:text-3xl">
+              — {dict.ceo.creed}
+            </p>
           </div>
         </div>
       </div>

@@ -63,7 +63,7 @@ export default function SeismicSafety() {
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Video Card */}
           <div data-reveal className="relative">
-            <div className="group relative h-full overflow-hidden rounded-[24px] border-2 border-line bg-surface shadow-2xl transition-all duration-700 hover:border-copper/50 hover:shadow-copper/10">
+            <div className="group relative h-full overflow-hidden rounded-[16px] bg-surface shadow-2xl">
               <div className="aspect-video w-full">
                 <video
                   ref={videoRef}
@@ -92,7 +92,7 @@ export default function SeismicSafety() {
           </div>
 
           {/* Content Card */}
-          <div data-reveal className="flex flex-col justify-between space-y-8 rounded-[24px] border-2 border-line bg-surface p-8 shadow-2xl md:p-10">
+          <div data-reveal className="flex flex-col justify-between space-y-8 rounded-[16px] border border-line bg-surface p-8 md:p-10">
             {/* Description */}
             <div className="space-y-4 text-[15px] leading-relaxed text-ink-soft">
               <p>{dict.seismic.body2}</p>
@@ -100,7 +100,7 @@ export default function SeismicSafety() {
 
             {/* Stats cards */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="group relative overflow-hidden rounded-[20px] border border-line bg-bg p-6 transition-all duration-500 hover:border-copper hover:shadow-lg">
+              <div className="group relative overflow-hidden rounded-[12px] border border-line bg-bg p-6 transition-colors duration-500 hover:border-copper">
                 <div className="relative z-10">
                   <div className="font-display text-5xl font-medium text-copper">8-9</div>
                   <p className="label-mono mt-2 text-ink-soft">{dict.seismic.stat1}</p>
@@ -108,7 +108,7 @@ export default function SeismicSafety() {
                 <div className="absolute -right-6 -bottom-6 size-32 rounded-full bg-copper/5 opacity-0 transition-all duration-700 group-hover:scale-150 group-hover:opacity-100" />
               </div>
 
-              <div className="group relative overflow-hidden rounded-[20px] border border-line bg-bg p-6 transition-all duration-500 hover:border-copper hover:shadow-lg">
+              <div className="group relative overflow-hidden rounded-[12px] border border-line bg-bg p-6 transition-colors duration-500 hover:border-copper">
                 <div className="relative z-10">
                   <div className="font-display text-5xl font-medium text-copper">100%</div>
                   <p className="label-mono mt-2 text-ink-soft">{dict.seismic.stat2}</p>
@@ -118,7 +118,7 @@ export default function SeismicSafety() {
             </div>
 
             {/* Partners panel */}
-            <div className="rounded-[20px] border border-copper/30 bg-copper/5 p-6">
+            <div className="rounded-[12px] border border-copper/30 bg-copper/5 p-6">
               <div className="mb-4 flex items-center gap-2.5">
                 <svg viewBox="0 0 24 24" className="size-5 text-copper" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -151,13 +151,6 @@ export default function SeismicSafety() {
               </ul>
             </div>
 
-            {/* Trust indicator */}
-            <div className="flex items-center gap-3 rounded-full border border-line bg-bg px-5 py-3">
-              <svg viewBox="0 0 24 24" className="size-6 text-copper" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <span className="label-mono text-ink-soft">Sertifikatlangan va tekshirilgan</span>
-            </div>
           </div>
         </div>
       </div>

@@ -280,14 +280,6 @@ html.lenis body {
   color: transparent;
 }
 
-/* gradient copper text */
-.text-copper-grad {
-  background: linear-gradient(115deg, var(--copper) 20%, var(--gold) 55%, var(--copper) 85%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 /* glass panel */
 .glass {
   background: var(--glass);

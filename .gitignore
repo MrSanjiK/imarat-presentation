@@ -29,3 +29,5 @@ yarn-error.log*
 .agents/
 .claude/
 .impeccable/
+skills-lock.json
+dev-server.log

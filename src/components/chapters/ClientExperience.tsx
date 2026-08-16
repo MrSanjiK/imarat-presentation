@@ -90,7 +90,7 @@ export default function ClientExperience() {
                   pointerEvents: isActive ? "auto" : "none",
                 }}
               >
-                <div className="cursor-pointer overflow-hidden rounded-[20px] border border-line bg-surface-2 shadow-2xl transition-transform hover:scale-[1.02]" onClick={() => setViewerOpen(true)}>
+                <div className="cursor-pointer overflow-hidden rounded-[16px] bg-surface-2 shadow-2xl transition-transform hover:scale-[1.02]" onClick={() => setViewerOpen(true)}>
                   {item.type === "video" ? (
                     <video
                       ref={isActive ? videoRef : undefined}

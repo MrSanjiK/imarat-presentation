@@ -1,18 +1,19 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { useGSAP } from "@/lib/gsap";
 import { usePresentation } from "@/components/PresentationShell";
 import { setupReveals } from "@/lib/reveal";
 import { projectOrder, projectsMeta } from "@/data/projects";
-import { coverImage, projectImgSrc, projectImgSrcSet } from "@/lib/media";
+import { coverImage, projectImgSrc, projectImgSrcSet, RENDERS } from "@/lib/media";
+import { useAutoplayVideo } from "@/hooks/useAutoplayVideo";
 import ChapterLabel from "@/components/ui/ChapterLabel";
-import RenderBackdrop, { RENDERS } from "@/components/ui/RenderBackdrop";
 
 export default function Projects() {
   const { dict, openProject } = usePresentation();
   const root = useRef<HTMLElement>(null);
   const [hovered, setHovered] = useState(0);
+  const videoRef = useAutoplayVideo();
 
   useGSAP(
     () => {
@@ -22,18 +23,25 @@ export default function Projects() {
   );
 
   return (
-    <RenderBackdrop
-      videoSrc={RENDERS.bristolSeq}
-      posterSrc={RENDERS.bristolSeqPoster}
-      className="py-0"
-    >
-      <section
-        ref={root}
-        id="projects"
-        data-chapter="projects"
-        className="relative"
-      >
-      <div className="px-5 pt-28 md:px-10 md:pt-40 lg:pr-24">
+    <section ref={root} id="projects" data-chapter="projects" className="relative">
+      {/* render-video backdrop — absolute layer, NOT a wrapper: keeps sticky alive */}
+      <div className="absolute inset-0" aria-hidden>
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover"
+          src={RENDERS.bristolSeq}
+          poster={RENDERS.bristolSeqPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        <div className="absolute inset-0 bg-bg/[0.93]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
+      </div>
+
+      <div className="relative px-5 pt-28 md:px-10 md:pt-40 lg:pr-24">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-6 md:mb-10">
           <div>
             <ChapterLabel index="05" className="mb-6">
@@ -55,11 +63,11 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-        {/* sticky preview — desktop only */}
+      <div className="relative grid lg:grid-cols-[0.95fr_1.05fr]">
+        {/* sticky preview — desktop only. No transform/overflow ancestors above this. */}
         <div className="relative hidden lg:block">
-          <div className="sticky top-20 flex min-h-[80vh] items-center justify-center p-10 pl-10">
-            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[24px] border-2 border-line bg-surface-2 shadow-2xl">
+          <div className="sticky top-20 flex min-h-[80vh] items-center justify-center p-10">
+            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[16px] bg-surface-2 shadow-2xl">
               {projectOrder.map((slug, i) => {
                 const cover = coverImage(slug);
                 if (!cover) return null;
@@ -83,12 +91,12 @@ export default function Projects() {
                   />
                 );
               })}
-              <div className="pointer-events-none absolute inset-0 rounded-[24px] bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <span className="absolute bottom-6 left-6 z-10 font-mono text-xs font-medium uppercase tracking-[0.2em] text-white/95 drop-shadow-lg">
+              <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-6 left-6 z-20 font-mono text-xs font-medium tracking-[0.2em] text-white/95 uppercase drop-shadow-lg">
                 {projectsMeta[projectOrder[hovered]].num} — {dict.projects[projectOrder[hovered]]?.name}
               </span>
             </div>
-            <div className="pointer-events-none absolute right-14 bottom-14 -z-0 hidden xl:block">
+            <div className="pointer-events-none absolute right-14 bottom-14 hidden xl:block">
               <span className="text-outline font-display text-[9rem] leading-none opacity-50">
                 {projectsMeta[projectOrder[hovered]].num}
               </span>
@@ -130,8 +138,7 @@ export default function Projects() {
                     )}
                     <span className="label-mono w-8 shrink-0 !text-copper">{meta.num}</span>
                     <span className="min-w-0 flex-1">
-                      {/* Improved readability */}
-                      <span className="block font-display text-[clamp(1.6rem,3.5vw,3rem)] font-medium leading-[1.2] transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-copper">
+                      <span className="block font-display text-[clamp(1.6rem,3.5vw,3rem)] leading-[1.2] font-medium transition-[color,transform] duration-500 group-hover:translate-x-2 group-hover:text-copper">
                         {copy?.name}
                       </span>
                       <span className="mt-1.5 block truncate text-[13px] leading-relaxed text-muted md:text-sm">
@@ -141,7 +148,7 @@ export default function Projects() {
                     {copy?.location && (
                       <span className="label-mono hidden shrink-0 md:block">{copy.location}</span>
                     )}
-                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line bg-surface transition-all duration-500 group-hover:rotate-45 group-hover:border-copper group-hover:bg-copper-soft group-hover:shadow-lg">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line bg-surface transition-all duration-500 group-hover:rotate-45 group-hover:border-copper group-hover:bg-copper-soft">
                       <svg
                         viewBox="0 0 24 24"
                         className="size-4 -rotate-45 text-ink transition-colors group-hover:text-copper"
@@ -163,6 +170,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-    </RenderBackdrop>
   );
 }
