@@ -147,6 +147,20 @@ export interface Dict {
     hint: string;
     empty: string;
   };
+  projectsInfo: {
+    label: string;
+    title: string;
+    sub: string;
+    projectCol: string;
+    landCol: string;
+    totalCol: string;
+    blocksCol: string;
+    startedCol: string;
+    builtCol: string;
+    haUnit: string;
+    m2Unit: string;
+    note: string;
+  };
   contact: {
     label: string;
     title: string;

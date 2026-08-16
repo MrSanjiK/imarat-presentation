@@ -5,6 +5,7 @@ import Manifesto from "@/components/chapters/Manifesto";
 import SeismicSafety from "@/components/chapters/SeismicSafety";
 import Stats from "@/components/chapters/Stats";
 import Projects from "@/components/chapters/Projects";
+import ProjectsInfo from "@/components/chapters/ProjectsInfo";
 import Process from "@/components/chapters/Process";
 import Advantages from "@/components/chapters/Advantages";
 import Founder from "@/components/chapters/Founder";
@@ -23,6 +24,7 @@ export default function Home({ locale, dict }: { locale: Locale; dict: Dict }) {
         <SeismicSafety />
         <Stats />
         <Projects />
+        <ProjectsInfo dict={dict} />
         <Process />
         <Advantages />
         <Founder />
